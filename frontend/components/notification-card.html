@@ -1,0 +1,48 @@
+<!--
+Шаблон карточки уведомления в личном кабинете
+-->
+
+<div class="notification-card">
+  <!-- Левая часть уведомления -->
+  <div class="notification-card__left-container">
+    <!-- Маркер непрочитанного уведомления -->
+    <div
+      class="notification-card__marker"
+      id="notification-card__notification-unread"
+    ></div>
+
+    <!-- Текст уведомления -->
+    <div class="notification-card__text">
+      <!-- Заголовок уведомления -->
+      <p class="text__button" id="notification-card__notification-title">
+        Заголовок уведомления
+      </p>
+
+      <!-- Основной текст -->
+      <p
+        class="text__body-smaller"
+        id="notification-card__notification-content"
+      ></p>
+    </div>
+  </div>
+
+  <!-- Правая часть уведомления -->
+  <div class="notification-card__right-container">
+    <!-- Дата уведомления -->
+    <p class="text__body-smaller" id="notification-card__notification-date">
+      ДД.ММ.ГГГГ
+    </p>
+
+    <!-- Кнопка удаления уведомления -->
+    <button
+      class="button__icon-only"
+      id="notification-card__notification-delete"
+    >
+      <img
+        class="icon"
+        src="../assets/icons/icon_bin.svg"
+        title="Удалить уведомление"
+      />
+    </button>
+  </div>
+</div>

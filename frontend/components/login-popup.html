@@ -1,0 +1,89 @@
+<!--
+Компонент поп-апа входа в аккаунт
+-->
+
+<div class="login-popup" id="popup__login">
+  <!-- Верхняя часть окна -->
+  <div class="login__top">
+    <!-- Заголовок поп-апа -->
+    <h3 class="text__h3">Вход в аккаунт</h3>
+
+    <!-- Кнопка закрытия окна -->
+    <button class="login__close" id="login__close-btn" title="Закрыть">
+      <img
+        class="icon"
+        src="/static/assets/icons/icon_close_black.svg"
+        alt="Закрыть"
+      />
+    </button>
+  </div>
+
+  <!-- Основной контент -->
+  <div class="login__main">
+    <!-- Поля формы -->
+    <div class="login__text-inputs">
+      <!-- Поле электронной почты -->
+      <div class="text-input">
+        <div class="text-input__title">Адрес электронной почты*</div>
+
+        <input
+          class="text-input__field"
+          type="text"
+          id="login__email"
+          placeholder="example@yandex.ru"
+          autocomplete="email"
+        />
+
+        <!-- Сообщение об ошибке -->
+        <p
+          class="text__small-text text-input__message"
+          id="login__email-msg"
+        ></p>
+      </div>
+
+      <!-- Поле пароля -->
+      <div class="text-input">
+        <div class="text-input__title">Пароль*</div>
+
+        <!-- Тип password скрывает вводимые символы -->
+        <input
+          class="text-input__field"
+          type="password"
+          id="login__password"
+          placeholder="Пароль"
+          autocomplete="current-password"
+        />
+
+        <!-- Сообщение об ошибке -->
+        <p
+          class="text__small-text text-input__message"
+          id="login__password-msg"
+        ></p>
+      </div>
+
+      <!-- Общая ошибка от сервера -->
+      <p
+        class="text__small-text"
+        id="login__general-msg"
+        style="color: var(--error); display: none"
+      ></p>
+
+      <p class="text__body-smaller">* — поля обязательны для заполнения</p>
+    </div>
+
+    <!-- Кнопки и ссылки -->
+    <div class="login__buttons">
+      <!-- Кнопка отправки формы -->
+      <button class="text__button button__accent2-no-icon" id="login__submit">
+        Войти
+      </button>
+
+      <!-- Переход к регистрации -->
+      <p class="text__body-smaller">
+        Нет аккаунта?
+
+        <a href="#" id="login__go-to-register"> Зарегистрироваться </a>
+      </p>
+    </div>
+  </div>
+</div>

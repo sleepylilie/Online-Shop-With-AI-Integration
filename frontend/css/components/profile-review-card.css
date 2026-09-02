@@ -1,0 +1,34 @@
+/* 
+=========
+Стили карточки отзыва в профиле
+=========
+Файл отвечает за:
+- отображение карточки отзыва,
+- расположение изображения и текста,
+- оформление блока информации,
+- отступы между элементами
+*/
+
+/* Основной контейнер карточки */
+.profile-review-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content;
+    padding: 12px 0;
+    border-top: 2px solid var(--pastel-yellow);
+}
+
+/* Изображение товара */
+.profile-review-card__image img {
+    width: 120px;
+    height: 120px;
+}
+
+/* Блок информации */
+.profile-review-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

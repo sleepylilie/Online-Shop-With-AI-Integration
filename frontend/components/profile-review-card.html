@@ -1,0 +1,69 @@
+<!--
+Шаблон карточки отзыва пользователя в личном кабинете
+-->
+
+<div class="profile-review-card">
+  <!-- Изображение товара -->
+  <div class="profile-review-card__image">
+    <img id="profile-review-card__product-image" src="" />
+  </div>
+
+  <!-- Основная информация -->
+  <div class="profile-review-card__info">
+    <!-- Название товара -->
+    <p class="text__button" id="profile-review-card__product-title"></p>
+
+    <!-- Шаблон отдельного отзыва -->
+    <template class="review-card">
+      <!-- Информация о пользователе -->
+      <div class="review-info">
+        <div class="review-card__user-info">
+          <!-- Аватар пользователя -->
+          <img id="user__profile-avatar" src="" />
+
+          <!-- Данные отзыва -->
+          <div class="user-info__review-details">
+            <!-- Имя пользователя -->
+            <p class="text__body-smaller" id="user__first-name"></p>
+
+            <!-- Блок звезд рейтинга -->
+            <div class="review__star-count">
+              <img
+                src="../assets/icons/icon_star-filled_gray.svg"
+                id="product-rating-1"
+              />
+
+              <img
+                src="../assets/icons/icon_star-filled_gray.svg"
+                id="product-rating-2"
+              />
+
+              <img
+                src="../assets/icons/icon_star-filled_gray.svg"
+                id="product-rating-3"
+              />
+
+              <img
+                src="../assets/icons/icon_star-filled_gray.svg"
+                id="product-rating-4"
+              />
+
+              <img
+                src="../assets/icons/icon_star-filled_gray.svg"
+                id="product-rating-5"
+              />
+            </div>
+          </div>
+
+          <!-- Дата публикации -->
+          <p class="text__body-smaller" id="review__post-date">ДД.ММ.ГГГГ</p>
+        </div>
+      </div>
+
+      <!-- Текст отзыва -->
+      <div class="review-content">
+        <p class="text__body-smaller" id="review__content"></p>
+      </div>
+    </template>
+  </div>
+</div>

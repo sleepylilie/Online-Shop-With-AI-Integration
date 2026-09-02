@@ -1,0 +1,314 @@
+/* 
+=========
+Стили страницы генератора идей
+=========
+Файл отвечает за:
+- оформление интерфейса генератора идей,
+- отображение сообщений чата,
+- выбор параметров генерации,
+- отображение готовых идей,
+- адаптацию страницы под разные экраны
+*/
+
+/* Верхняя часть страницы */
+.idea-generator__top {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Основной контейнер страницы */
+.idea-generator__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Ссылки внутри страницы */
+.idea-generator__main a {
+    color: var(--accent2);
+}
+
+/* Эффект при наведении */
+.idea-generator__main a:hover {
+    text-decoration: underline;
+}
+
+/* Основные секции генератора */
+.idea-generator__generator-chat,
+.idea-generator__ready-ideas {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ===== Контейнер чата ===== */
+
+.generator-chat__container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--pastel-yellow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Верхняя панель чата */
+.generator-chat__top {
+    width: 100%;
+    height: 60px;
+    background-color: var(--pastel-yellow);
+    border-bottom: 2px solid var(--pastel-yellow);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+/* Основная область сообщений */
+.generator-chat__main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Ограничение высоты окна чата */
+    max-height: calc(100vh - 260px);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* ===== Сообщение чата ===== */
+
+.generator-chat-message {
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    padding: 16px 20px;
+    width: min(800px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Анимация загрузки ответа */
+.generator-chat-message--loading {
+    opacity: 0.6;
+    animation: pulse 1.2s infinite;
+}
+
+/* Анимация мигания */
+@keyframes pulse {
+
+    0%, 100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ===== Блок выбора параметров ===== */
+
+.generator-chat-generate {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--color-background);
+    border: 1px solid var(--pastel-yellow);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+/* Блоки выбора параметров */
+.generate__hobby-select,
+.generate__age-select,
+.generate__difficulty-select {
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Сетка выбора хобби */
+.hobby-select__filter-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* Сетка возрастных категорий */
+.age-select__filter-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Сетка уровней сложности */
+.difficulty-select__filter-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Контейнер кнопки генерации */
+.generate__button {
+    width: min(300px, 100%);
+}
+
+/* ===== Кнопки фильтров ===== */
+
+.button__filter-category {
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: var(--light-yellow);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Наведение на кнопку */
+.button__filter-category:hover {
+    background-color: var(--pastel-yellow);
+}
+
+/* Активная кнопка */
+.button__filter-category.active {
+    background-color: var(--pastel-green);
+    border-color: var(--accent2);
+    font-weight: 600;
+}
+
+/* ===== Кнопки после генерации ===== */
+
+.generator-chat-after-gen {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* ===== Готовые идеи ===== */
+
+/* Сетка карточек идей */
+.idea-generator__ready-ideas-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+/* Карточка идеи */
+.idea-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+/* Эффект при наведении */
+.idea-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(44,44,44,0.12);
+}
+
+/* Изображение идеи */
+.idea-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* Заголовок карточки */
+.idea-card__title {
+    padding: 0 8px;
+}
+
+/* Атрибуты идеи */
+.idea-card__attrs {
+    padding: 0 8px 8px;
+    color: var(--dark-gray);
+    font-size: 12px;
+}
+
+/* ===== Адаптация ===== */
+
+/* Планшетная версия */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+    .hobby-select__filter-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .idea-generator__ready-ideas-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .generator-chat-after-gen {
+        gap: 12px;
+    }
+
+    .generator-chat__main {
+        max-height: calc(100vh - 240px);
+    }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+
+    .hobby-select__filter-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .age-select__filter-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .difficulty-select__filter-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .idea-generator__ready-ideas-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .generator-chat-after-gen {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .generator-chat__main {
+        max-height: calc(100vh - 200px);
+    }
+}
+
+/* ===== Списки внутри сообщений ===== */
+
+/* Отступы для списков */
+.generator-chat-message ul,
+.generator-chat-message ol {
+    padding-left: 20px;
+    margin: 4px 0;
+}
+
+/* Элементы списка */
+.generator-chat-message li {
+    margin-bottom: 4px;
+}

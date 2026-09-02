@@ -1,0 +1,68 @@
+/* 
+=========
+Стили блока итоговой стоимости
+=========
+Файл отвечает за:
+- оформление блока с итогами корзины,
+- отображение общей стоимости и скидки,
+- оформление кнопки оформления заказа,
+- адаптацию блока под разные экраны
+*/
+
+/* Основной блок итоговой информации */
+.cart-items__summary {
+    background-color: var(--color-background);
+    border: 2px solid var(--pastel-yellow);
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: start;
+    max-height: fit-content;
+    grid-column: span 4;
+
+    /* Фиксация блока при прокрутке */
+    position: sticky;
+    top: 180px;
+    align-self: start;
+
+    /* Мобильная версия */
+    @media (max-width: 767px) {
+        grid-column: span 4;
+        position: static;
+    }
+
+    /* Планшетная версия */
+    @media (max-width: 1279px) and (min-width: 768px) {
+        grid-column: span 3;
+    }
+}
+
+/* Контейнер подсчета стоимости */
+.summary__counting {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Одна строка подсчета */
+.summary__counting-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Название строки */
+.counting-group__title {
+    color: var(--dark-gray);
+}
+
+/* Кнопка перехода к оформлению */
+.summary__proceed-to-order {
+    background-color: var(--accent2);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+}

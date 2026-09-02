@@ -1,0 +1,93 @@
+/* 
+=========
+Стили страницы корзины
+=========
+Файл отвечает за:
+- расположение товаров,
+- блок итоговой стоимости,
+- кнопки управления корзиной,
+- адаптацию страницы под разные экраны
+*/
+
+/* Верхняя часть страницы */
+.cart__top {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Основной контейнер корзины */
+.cart__cart-items {
+    display: grid;
+    /* Использование общей сетки страницы */
+    grid-template-columns: subgrid;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Список товаров */
+.cart-items__list {
+    /* Блок занимает 8 колонок сетки */
+    grid-column: span 8;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+/* Блок действий над товарами */
+.cart-items__actions {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+/* Кнопка удаления выбранных товаров */
+.cart-items__delete-selected {
+    color: var(--error);
+    cursor: pointer;
+}
+
+/* Эффект при наведении */
+.cart-items__delete-selected:hover {
+    text-decoration: underline;
+}
+
+/* Сообщение при пустой корзине */
+.cart__empty {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--dark-gray);
+    /* Сообщение занимает всю ширину сетки */
+    grid-column: 1 / -1;
+}
+
+/* ===== Адаптация ===== */
+
+/* Планшеты и небольшие экраны */
+@media (max-width: 1279px) {
+
+    .cart__cart-items {
+        gap: 16px;
+    }
+}
+
+/* Планшетная версия */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+    .cart-items__list {
+        /* Уменьшение ширины блока */
+        grid-column: span 5;
+    }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+
+    .cart-items__list {
+        /* Блок занимает всю ширину */
+        grid-column: span 4;
+    }
+}

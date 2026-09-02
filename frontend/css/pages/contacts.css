@@ -1,0 +1,52 @@
+/* 
+=========
+Стили страницы контактов
+=========
+Файл отвечает за:
+- расположение контактной информации,
+- оформление списка контактов,
+- выравнивание текста и ссылок,
+- отступы между блоками страницы
+*/
+
+/* Верхняя часть страницы */
+.contacts__top {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Основной контейнер страницы */
+.contacts__main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Список контактных блоков */
+.contacts__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* Ограничение ширины списка */
+    width: min(500px, 100%);
+}
+
+/* Отдельный блок контакта */
+.contacts__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Контент внутри блока контакта */
+.contact__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Заголовок поля */
+.contact__title {
+    color: var(--dark-gray);
+    width: 186px;
+}

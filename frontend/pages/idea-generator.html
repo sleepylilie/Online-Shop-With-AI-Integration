@@ -1,0 +1,288 @@
+<!--
+Страница генератора идей для творчества.
+Файл содержит интерфейс взаимодействия
+с искусственным интеллектом YandexGPT,
+а также блок готовых идей для пользователей.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Генератор идей</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Подключение стилей страницы -->
+    <link rel="stylesheet" href="/static/css/pages/idea-generator.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт логики генератора идей -->
+    <script type="module" src="/static/js/idea-generator.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="idea-generator__top">
+        <!-- Заголовок страницы -->
+        <h2 class="text__h2">Генератор идей</h2>
+      </section>
+
+      <!-- Основной контент -->
+      <section class="idea-generator__main">
+        <!-- Краткое описание функции -->
+        <p class="text__body-smaller">
+          Не знаете, что смастерить? Выберите хобби и ИИ сгенерирует идею! Или
+          выберите из
+          <a href="#ready-ideas-start">готовых идей</a>.
+        </p>
+
+        <!-- Блок генератора идей -->
+        <div class="idea-generator__generator-chat">
+          <h3 class="text__h3">Генератор идей</h3>
+
+          <div class="generator-chat__container">
+            <!-- Верхняя часть чата -->
+            <div class="generator-chat__top">
+              <!-- Иконка бота -->
+              <img
+                class="profile-icon"
+                src="/static/assets/icons/icon_bot.svg"
+                alt="AI"
+              />
+
+              <!-- Название генератора -->
+              <p class="text__button">Генератор творческих идей (YandexGPT)</p>
+            </div>
+
+            <!-- Лента сообщений -->
+            <div class="generator-chat__main" id="chat__messages">
+              <!-- Приветственное сообщение -->
+              <div class="generator-chat-message">
+                <p>
+                  Привет! Хочешь заняться хобби, но не знаешь что смастерить?
+                  Выбери хобби, возрастную категорию и уровень сложности, и я
+                  помогу!
+                </p>
+
+                <p>
+                  Можешь также посмотреть
+                  <a href="#ready-ideas-start">готовые идеи</a>
+                </p>
+              </div>
+
+              <!-- Форма генерации -->
+              <div class="generator-chat-generate" id="chat__generate-form">
+                <!-- Выбор хобби -->
+                <div class="generate__hobby-select">
+                  <p class="text__body-smaller">Выберите хобби:</p>
+
+                  <div class="hobby-select__filter-list">
+                    <!-- Кнопки выбора хобби -->
+                    <button
+                      class="button__filter-category text__button active"
+                      data-hobby="Рисование"
+                    >
+                      🎨 Рисование
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Шитье"
+                    >
+                      🪡 Шитье
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Вышивание"
+                    >
+                      🧵 Вышивание
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Вязание"
+                    >
+                      🧶 Вязание
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Валяние"
+                    >
+                      🪡 Валяние
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Лепка"
+                    >
+                      🗿 Лепка
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Скрапбукинг"
+                    >
+                      ✂️ Скрапбукинг
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Бисероплетение"
+                    >
+                      🪢 Бисероплетение
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Декорирование"
+                    >
+                      🎀 Декорирование
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Мыловарение"
+                    >
+                      🧼 Мыловарение
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Свечеварение"
+                    >
+                      🕯️ Свечеварение
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Флористика"
+                    >
+                      🌸 Флористика
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Эпоксидная смола"
+                    >
+                      ✨ Эпоксидная смола
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-hobby="Кулинария"
+                    >
+                      🍳 Кулинария
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Выбор возрастной категории -->
+                <div class="generate__age-select">
+                  <p class="text__body-smaller">Возрастная категория:</p>
+
+                  <div class="age-select__filter-list">
+                    <button
+                      class="button__filter-category text__button active"
+                      data-age="все"
+                    >
+                      Все
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-age="дети"
+                    >
+                      Дети
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-age="молодежь"
+                    >
+                      Молодёжь
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-age="взрослые"
+                    >
+                      Взрослые
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Выбор уровня сложности -->
+                <div class="generate__difficulty-select">
+                  <p class="text__body-smaller">Уровень сложности:</p>
+
+                  <div class="difficulty-select__filter-list">
+                    <button
+                      class="button__filter-category text__button active"
+                      data-difficulty="легкий"
+                    >
+                      Лёгкий
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-difficulty="средний"
+                    >
+                      Средний
+                    </button>
+
+                    <button
+                      class="button__filter-category text__button"
+                      data-difficulty="сложный"
+                    >
+                      Сложный
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Кнопка запуска генерации -->
+                <div class="generate__button">
+                  <button
+                    class="button__accent2-no-icon text__button"
+                    id="chat__generate-btn"
+                  >
+                    Продолжить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Блок готовых идей -->
+        <div class="idea-generator__ready-ideas">
+          <h3 class="text__h3" id="ready-ideas-start">Готовые идеи</h3>
+
+          <!-- Контейнер карточек идей (подгружаются автоматически) -->
+          <div class="idea-generator__ready-ideas-list" id="ideas__grid">
+            <!-- Сообщение во время загрузки -->
+            <p class="text__body-smaller" style="color: var(--dark-gray)">
+              Загрузка...
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

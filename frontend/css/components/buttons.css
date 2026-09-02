@@ -1,0 +1,79 @@
+/* 
+=========
+Стили кнопок проекта
+=========
+Файл отвечает за:
+- оформление основных кнопок,
+- эффекты при наведении/взаимодействии
+*/
+
+/* Основная акцентная кнопка */
+.button__accent2-no-icon {
+    background-color: var(--accent2);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Кнопка фильтра */
+.button__filter-category {
+    display: flex;
+    padding: 4px 16px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--light-yellow);
+    border-radius: 3px;
+}
+
+/* Кнопка с иконкой без фона */
+.button__icon-with-text-no-bg {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+/* Кнопка только с иконкой */
+.button__icon-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Акцентная кнопка с иконкой */
+.button__accent1-with-icon {
+    background-color: var(--accent1);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* Эффект при наведении */
+.button__accent1-with-icon:hover,
+.button__accent2-no-icon:hover {
+    opacity: 0.9;
+}
+
+/* Светлая кнопка с иконкой */
+.button__pastel-yellow-with-icon {
+    background-color: var(--pastel-yellow);
+    color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    border-radius: 4px;
+    padding: 8px;
+}

@@ -1,0 +1,457 @@
+/* 
+=========
+Стили страницы товара
+=========
+Файл отвечает за:
+- отображение информации о товаре,
+- галерею изображений,
+- блок цены и покупки,
+- вкладки описания, характеристик и отзывов,
+- адаптацию страницы под разные экраны
+*/
+
+/* ===== Верхняя часть страницы ===== */
+
+.product__top {
+
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ===== Основной контейнер ===== */
+
+.product__main {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* ===== Галерея товара ===== */
+
+.product-main__photo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    grid-area: photo;
+}
+
+/* Основное изображение */
+.photo-section__main {
+    display: grid;
+    align-items: center;
+}
+
+/* Главное фото */
+.photo-section__main-image {
+    width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+/* Контейнер стрелок переключения */
+.main-image__switch {
+    display: flex;
+    justify-content: space-between;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    pointer-events: none;
+}
+
+/* Кнопка переключения фото */
+.main-image__navigation-button {
+    pointer-events: all;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Наведение на кнопку */
+.main-image__navigation-button:hover {
+    background: white;
+}
+
+/* Миниатюры изображений */
+.photo-section__thumbnails {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Миниатюра */
+.product-thumbnail {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+/* Активная миниатюра */
+.product-thumbnail:hover,
+.product-thumbnail.active {
+    border-color: var(--accent2);
+}
+
+/* Изображение миниатюры */
+.product-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== Описание товара ===== */
+
+.product-main__description {
+    grid-area: description;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Кнопки действий */
+.description__action-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+/* Кнопка избранного */
+.product__add-to-favorite {
+    display: flex;
+    gap: 4px;
+    color: var(--accent1);
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+/* Наведение */
+.product__add-to-favorite:hover {
+    opacity: 0.75;
+}
+
+/* Кнопка поделиться */
+.product__share {
+    display: flex;
+    gap: 4px;
+    color: var(--dark-gray);
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+/* Наведение */
+.product__share:hover {
+    opacity: 0.75;
+}
+
+/* ===== Теги товара ===== */
+
+.description__product-tags {
+    display: flex;
+    gap: 12px;
+}
+
+/* Один тег */
+.product-tag {
+    background-color: var(--accent1);
+    color: var(--white);
+    border-radius: 3px;
+    text-align: center;
+    padding: 2px 12px;
+    display: flex;
+    align-items: center;
+}
+
+/* ===== Информация о товаре ===== */
+
+.description__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Рейтинг */
+.product-rating__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Контейнер рейтинга */
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ===== Характеристики ===== */
+
+.product-attributes__block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Список характеристик */
+.product-attributes {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Одна характеристика */
+.product-attribute {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 4px 0;
+}
+
+/* Название характеристики */
+.product-attribute__name {
+    color: var(--dark-gray);
+    flex: 1;
+}
+
+/* Значение характеристики */
+.product-attribute__value {
+    flex: 1;
+    text-align: right;
+}
+
+/* ===== Блок цены ===== */
+
+.product-main__price-summary {
+    grid-area: price;
+    height: fit-content;
+    background-color: var(--color-background);
+    border: 2px solid var(--pastel-yellow);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Фиксация блока при прокрутке */
+    position: sticky;
+    top: 176px;
+}
+
+/* Контейнер цены */
+.price-summary__product-price {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Блок скидки */
+.price-summary__sale-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Старая цена */
+#product__old-price {
+    color: var(--dark-gray);
+    text-decoration: line-through;
+}
+
+/* Тег скидки */
+.sale-price__sale-tag {
+    display: flex;
+    align-items: center;
+    background-color: var(--accent1);
+    color: var(--white);
+    border-radius: 3px;
+    padding: 2px 8px;
+}
+
+/* Дополнительная информация */
+.price-summary__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Строка информации */
+.product-info__block {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ===== Дополнительные товары ===== */
+
+.product__extra-product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+/* ===== Вкладки ===== */
+
+.product__about-product {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Панель вкладок */
+.about-product__controller {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    width: min(455px, 100%);
+    border: 2px solid var(--light-gray);
+}
+
+/* Кнопка вкладки */
+.about-product__controller-button {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    white-space: nowrap;
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    cursor: pointer;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+    text-align: center;
+}
+
+/* Активная вкладка */
+.about-product__controller-button.active {
+    background-color: var(--pastel-yellow);
+    color: var(--black);
+}
+
+/* Наведение */
+.about-product__controller-button:hover:not(.active) {
+    background-color: var(--pastel-yellow);
+    color: var(--black);
+    opacity: 0.7;
+}
+
+/* Контент вкладки */
+.about-product__tab {
+    width: 100%;
+}
+
+/* Текст описания */
+.about-product__description {
+    line-height: 1.7;
+    text-align: justify;
+    max-width: 700px;
+}
+
+/* Характеристики */
+.about-product__attributes {
+    max-width: 500px;
+}
+
+/* ===== Отзывы ===== */
+
+.about-product__reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Общий рейтинг */
+.reviews__general-rating {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Блок рейтинга */
+.product__general-rating {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Иконка рейтинга */
+.product__general-rating img {
+    width: 36px;
+    height: 36px;
+}
+
+/* Количество отзывов */
+#product__reviews-count {
+    color: var(--dark-gray);
+}
+
+/* Список отзывов */
+.reviews__user-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 700px;
+}
+
+/* ===== Адаптация ===== */
+
+/* Десктоп */
+@media (min-width: 1280px) {
+
+    .product__main {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-areas:
+            "photo photo photo photo photo description description description description price price price";
+    }
+}
+
+/* Планшет */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+    .product__main {
+
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-areas:
+            "photo photo photo photo price price price price"
+            "description description description description description description description description";
+        gap: 16px;
+    }
+
+    /* Блок цены становится обычным */
+    .product-main__price-summary {
+        position: static;
+    }
+}
+
+/* Телефон */
+@media (max-width: 767px) {
+
+    .product__main {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "photo photo photo photo"
+            "price price price price"
+            "description description description description";
+        gap: 16px;
+    }
+
+    /* Блок цены без фиксации */
+    .product-main__price-summary {
+        position: static;
+    }
+}

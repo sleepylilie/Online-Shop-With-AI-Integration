@@ -1,0 +1,338 @@
+<!--
+Страница карточки товара.
+Файл показывает фотографии товара, цену,
+описание, характеристики, отзывы и похожие товары.
+Данные товара загружаются динамически
+с помощью файла product.ts.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Товар</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт логики карточки товара -->
+    <script type="module" src="/static/js/product.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="product__top">
+        <!-- Хлебные крошки -->
+        <div class="top__bread-crumbs" id="product__breadcrumbs">
+          <a href="/index.html" class="text__body-smaller">Главная</a>
+        </div>
+
+        <!-- Название товара -->
+        <h2 class="text__h2" id="product__title"></h2>
+      </section>
+
+      <!-- Основной блок карточки товара -->
+      <section class="product__main">
+        <!-- Галерея фотографий товара -->
+        <div class="product-main__photo-section" data-area="photo">
+          <!-- Главное изображение -->
+          <div class="photo-section__main">
+            <img
+              class="photo-section__main-image"
+              id="product__main-image"
+              src=""
+              alt="Фото товара"
+            />
+
+            <!-- Кнопки переключения фотографий -->
+            <div class="main-image__switch">
+              <button
+                class="main-image__navigation-button"
+                id="product__prev-image"
+              >
+                <img
+                  class="icon"
+                  src="/static/assets/icons/icon_arrow-left_swipe.svg"
+                  alt=""
+                />
+              </button>
+
+              <button
+                class="main-image__navigation-button"
+                id="product__next-image"
+              >
+                <img
+                  class="icon"
+                  src="/static/assets/icons/icon_arrow-right_swipe.svg"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+
+          <!-- Миниатюры изображений -->
+          <div class="photo-section__thumbnails" id="product__thumbnails"></div>
+        </div>
+
+        <!-- Краткая информация о товаре -->
+        <div class="product-main__description" data-area="description">
+          <!-- Кнопки действий -->
+          <div class="description__action-buttons">
+            <!-- Добавление товара в избранное -->
+            <button class="product__add-to-favorite" id="product__btn-favorite">
+              <img
+                class="icon product__icon-favorite"
+                src="/static/assets/icons/icon_liked.svg"
+                alt=""
+              />
+
+              <p class="text__button">В избранное</p>
+            </button>
+
+            <!-- Кнопка поделиться -->
+            <button class="product__share" id="product__btn-share">
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_share_gray.svg"
+                alt=""
+              />
+
+              <p class="text__button">Поделиться</p>
+            </button>
+          </div>
+
+          <!-- Теги товара -->
+          <div
+            class="description__product-tags"
+            id="product__tags"
+            style="display: none"
+          >
+            <!-- Тег новинки -->
+            <div
+              class="product-tag"
+              id="product__tag-new"
+              style="display: none"
+            >
+              <span class="text__body-smaller">новинка</span>
+            </div>
+
+            <!-- Тег скидки -->
+            <div
+              class="product-tag"
+              id="product__tag-sale"
+              style="display: none"
+            >
+              <span class="text__body-smaller">скидка</span>
+            </div>
+          </div>
+
+          <!-- Краткое описание -->
+          <div class="description__product-info">
+            <div class="description__block-header">
+              <p class="text__price">Описание</p>
+            </div>
+
+            <p class="text__body-smaller" id="product__desc-short"></p>
+          </div>
+
+          <!-- Краткий рейтинг -->
+          <div class="description__product-info">
+            <div class="description__block-header">
+              <p class="text__price">Рейтинг</p>
+            </div>
+
+            <div class="product-rating__block">
+              <div class="product-rating">
+                <img
+                  class="icon"
+                  src="/static/assets/icons/icon_star-filled_yellow.svg"
+                  alt=""
+                />
+
+                <p class="text__body-smaller" id="product__rating-short"></p>
+              </div>
+
+              <!-- Переход к отзывам -->
+              <a
+                href="#"
+                class="text__body-smaller"
+                id="product__go-to-reviews"
+              >
+                Смотреть все отзывы
+              </a>
+            </div>
+          </div>
+
+          <!-- Краткие характеристики -->
+          <div class="description__product-info">
+            <div class="description__block-header">
+              <p class="text__price">О товаре</p>
+            </div>
+
+            <div class="product-attributes__block">
+              <!-- Характеристики товара -->
+              <div class="product-attributes" id="product__attrs-short"></div>
+
+              <!-- Переход ко всем характеристикам -->
+              <a href="#" class="text__body-smaller" id="product__go-to-attrs">
+                Все характеристики
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Блок цены и покупки -->
+        <div class="product-main__price-summary" data-area="price">
+          <!-- Цена товара -->
+          <div class="price-summary__product-price">
+            <!-- Старая цена и скидка -->
+            <div class="price-summary__sale-price">
+              <p
+                class="text__body-smaller"
+                id="product__old-price"
+                style="display: none"
+              ></p>
+
+              <div
+                class="sale-price__sale-tag"
+                id="product__sale-tag"
+                style="display: none"
+              >
+                <p class="text__small-text" id="product__sale-percent"></p>
+              </div>
+            </div>
+
+            <!-- Текущая цена -->
+            <p class="text__price" id="product__price"></p>
+          </div>
+
+          <!-- Информация о наличии и доставке -->
+          <div class="price-summary__product-info">
+            <!-- Наличие товара -->
+            <div class="product-info__block">
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_stock.svg"
+                alt=""
+              />
+
+              <p class="text__body-smaller">
+                В наличии: <span id="product__stock"></span> шт.
+              </p>
+            </div>
+
+            <!-- Доставка -->
+            <div class="product-info__block">
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_delivery.svg"
+                alt=""
+              />
+
+              <p class="text__body-smaller">Доставка за 3 дня от 100 ₽</p>
+            </div>
+          </div>
+
+          <!-- Добавление товара в корзину -->
+          <button class="button__accent1-with-icon" id="product__btn-cart">
+            <img
+              class="icon"
+              src="/static/assets/icons/icon_add-to-cart.svg"
+              alt=""
+            />
+
+            <p class="text__button">В корзину</p>
+          </button>
+        </div>
+      </section>
+
+      <!-- Блок похожих товаров -->
+      <section class="product__extra-product-list">
+        <h3 class="text__h3">С этим товаром берут</h3>
+
+        <!-- Список товаров подгружается через product.ts -->
+        <div class="product-list" id="product__related-list"></div>
+      </section>
+
+      <!-- Подробная информация о товаре -->
+      <section class="product__about-product" id="product__about-section">
+        <!-- Переключатели вкладок -->
+        <div class="about-product__controller">
+          <button
+            class="about-product__controller-button active"
+            data-tab="description"
+          >
+            <p class="text__price">Описание</p>
+          </button>
+
+          <button
+            class="about-product__controller-button"
+            data-tab="attributes"
+          >
+            <p class="text__price">Характеристики</p>
+          </button>
+
+          <button class="about-product__controller-button" data-tab="reviews">
+            <p class="text__price">Отзывы</p>
+          </button>
+        </div>
+
+        <!-- Вкладка описания -->
+        <div class="about-product__tab" id="tab__description">
+          <p
+            class="text__body-smaller about-product__description"
+            id="product__desc-full"
+          ></p>
+        </div>
+
+        <!-- Вкладка характеристик -->
+        <div
+          class="about-product__tab"
+          id="tab__attributes"
+          style="display: none"
+        >
+          <div
+            class="about-product__attributes product-attributes"
+            id="product__attrs-full"
+          ></div>
+        </div>
+
+        <!-- Вкладка отзывов -->
+        <div class="about-product__tab" id="tab__reviews" style="display: none">
+          <div class="about-product__reviews">
+            <!-- Общий рейтинг товара -->
+            <div class="reviews__general-rating">
+              <div class="product__general-rating">
+                <img
+                  src="/static/assets/icons/icon_star-filled_yellow.svg"
+                  alt=""
+                />
+
+                <p class="text__h3" id="product__rating-total"></p>
+              </div>
+
+              <p class="text__body-smaller" id="product__reviews-count"></p>
+            </div>
+
+            <!-- Список отзывов -->
+            <div class="reviews__user-reviews" id="product__reviews-list"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

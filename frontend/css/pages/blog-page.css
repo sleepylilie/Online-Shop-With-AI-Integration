@@ -1,0 +1,138 @@
+/* 
+=========
+Стили страницы публикации
+=========
+Файл отвечает за:
+- оформление страницы статьи или новости,
+- отображение изображений и текста,
+- оформление кнопки "Поделиться",
+- адаптацию контента под разные экраны
+*/
+
+/* Верхняя часть страницы */
+.blog-page__top {
+    margin-top: 20px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Основной контейнер страницы */
+.blog-page__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Блок с датой публикации и кнопкой */
+.main__blog-info {
+    color: var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Кнопка «Поделиться» */
+.blog-page__share {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: var(--dark-gray);
+    /* Плавное изменение прозрачности */
+    transition: opacity 0.2s;
+}
+
+/* Эффект при наведении */
+.blog-page__share:hover {
+    opacity: 0.75;
+}
+
+/* Блок изображения публикации */
+.main__blog-image {
+    /* Ограничение максимальной ширины */
+    width: min(800px, 100%);
+    /* Центрирование блока */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Изображение публикации */
+.main__blog-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Основной текст публикации */
+.main__blog-text {
+    /* Ограничение ширины текста */
+    width: min(800px, 100%);
+    /* Центрирование текста */
+    margin: 0 auto;
+    text-align: justify;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* 
+Контент статьи приходит из базы данных в формате HTML.
+Браузер отображает его напрямую.
+*/
+
+/* Заголовки внутри статьи */
+.main__blog-text h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: var(--black);
+}
+
+/* Абзацы текста */
+.main__blog-text p {
+    margin-bottom: 12px;
+}
+
+/* Списки */
+.main__blog-text ul,
+.main__blog-text ol {
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+/* Элементы списка */
+.main__blog-text li {
+    margin-bottom: 6px;
+}
+
+/* Выделенный текст */
+.main__blog-text strong {
+    font-weight: 600;
+}
+
+/* Ссылки внутри статьи */
+.main__blog-text a {
+    color: var(--accent2);
+    text-decoration: underline;
+}
+
+/* ===== Адаптация для мобильной версии ===== */
+@media (max-width: 767px) {
+
+    /* Уменьшение размера текста */
+    .main__blog-text {
+        font-size: 12px;
+    }
+
+    /* Уменьшение заголовков */
+    .main__blog-text h3 {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,61 @@
+/* 
+=========
+Стили текстового поля
+=========
+Файл отвечает за:
+- оформление полей ввода,
+- отображение заголовков и сообщений,
+- состояния активности поля,
+- адаптацию размера текста
+*/
+
+/* Основной контейнер поля */
+.text-input {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+}
+
+/* Заголовок поля */
+.text-input__title {
+    width: 100%;
+}
+
+/* Поле ввода */
+.text-input__field {
+    width: 100%;
+    height: 40px;
+    background-color: var(--color-background);
+    color: var(--dark-gray);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    border-bottom: 2px solid var(--dark-gray);
+    font-family: 'Manrope';
+    font-size: 14px;
+    font-weight: 400;
+
+    /* Размер текста на телефонах */
+    @media (max-width: 767px) {
+        font-size: 12px;
+    }
+}
+
+/* Активное поле или заполненное поле */
+.text-input__field:focus,
+.text-input__field:not(:placeholder-shown) {
+    color: var(--black);
+    border-bottom: 2px solid var(--black);
+    outline: none;
+}
+
+/* Сообщение под полем */
+.text-input__message {
+    display: none;
+    width: 100%;
+}

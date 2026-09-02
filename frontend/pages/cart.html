@@ -1,0 +1,118 @@
+<!--
+Страница корзины интернет-магазина.
+Файл отображает:
+- добавленные товары, 
+- итоговую стоимость заказа,
+- элементы для управления содержимым корзины
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Корзина</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт для работы корзины -->
+    <script type="module" src="/static/js/cart.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="cart__top">
+        <!-- Заголовок страницы -->
+        <h2 class="text__h2">Корзина</h2>
+      </section>
+
+      <!-- Основной блок корзины -->
+      <section class="cart__cart-items">
+        <!-- Левая часть с товарами -->
+        <div class="cart-items__list">
+          <!-- Действия над товарами -->
+          <div class="cart-items__actions">
+            <!-- Выбор всех товаров -->
+            <label class="checkbox">
+              <input type="checkbox" id="cart__select-all" />
+              Выбрать все
+            </label>
+
+            <!-- Кнопка удаления выбранных товаров -->
+            <button
+              class="cart-items__delete-selected text__body-smaller"
+              id="cart__delete-selected"
+            >
+              Удалить выбранные
+            </button>
+          </div>
+
+          <!-- Контейнер с карточками товаров (загружает через cart.ts) -->
+          <div id="cart__items-container">
+            <!-- Сообщение во время загрузки -->
+            <p
+              class="text__body-smaller"
+              style="color: var(--dark-gray); padding: 20px 0"
+            >
+              Загрузка...
+            </p>
+          </div>
+        </div>
+
+        <!-- Правая часть с итоговой информацией -->
+        <div class="cart-items__summary">
+          <!-- Заголовок блока -->
+          <p class="text__price">Ваша корзина</p>
+
+          <!-- Подсчет стоимости -->
+          <div class="summary__counting">
+            <!-- Количество товаров -->
+            <div class="summary__counting-group">
+              <p class="counting-group__title text__body">
+                Товары (<span id="cart__total-count">0</span>)
+              </p>
+
+              <p class="text__body" id="cart__items-price">0 ₽</p>
+            </div>
+
+            <!-- Скидка -->
+            <div class="summary__counting-group">
+              <p class="counting-group__title text__body">Скидка</p>
+
+              <p class="text__body" id="cart__discount">0 ₽</p>
+            </div>
+          </div>
+
+          <!-- Итоговая сумма -->
+          <div class="summary__counting-group">
+            <p class="text__h3">Итого:</p>
+
+            <p class="text__h3" id="cart__final-price">0 ₽</p>
+          </div>
+
+          <!-- Кнопка оформления заказа -->
+          <button
+            class="summary__proceed-to-order text__button"
+            id="cart__proceed-to-order"
+          >
+            Перейти к оформлению
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

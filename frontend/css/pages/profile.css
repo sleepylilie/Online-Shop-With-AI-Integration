@@ -1,0 +1,437 @@
+/* 
+=========
+Стили страницы личного кабинета
+=========
+Файл отвечает за:
+- навигацию по разделам профиля,
+- отображение личной информации пользователя,
+- уведомления, заказы и отзывы,
+- адаптацию интерфейса под разные экраны
+*/
+
+/* ===== Верхняя часть страницы ===== */
+
+.profile__top {
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* ===== Основной контейнер ===== */
+
+.profile__main {
+    display: grid;
+    grid-template-columns: subgrid;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* ===== Навигация ===== */
+
+.profile__nav {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Кнопка раздела */
+.profile__nav-option {
+    background-color: var(--color-background);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+    height: 60px;
+    padding: 0 16px;
+    border-left: 3px solid transparent;
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+    width: 100%;
+    text-align: left;
+}
+
+/* Наведение и активный раздел */
+.profile__nav-option:hover,
+.profile__nav-option.active {
+    background-color: var(--pastel-yellow);
+    border-left-color: var(--accent1);
+}
+
+/* Блок с пользователем */
+.profile__nav-option--user {
+    cursor: default;
+    border-left-color: transparent !important;
+}
+
+/* Без эффекта наведения */
+.profile__nav-option--user:hover {
+    background-color: var(--color-background);
+    border-left-color: transparent !important;
+}
+
+/* Аватар пользователя */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* ===== Контент профиля ===== */
+
+.profile__content {
+    grid-column: span 9;
+}
+
+/* Кнопка возврата */
+.profile__back-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    margin-bottom: 8px;
+}
+
+/* Наведение */
+.profile__back-btn:hover {
+    text-decoration: underline;
+}
+
+/* Вкладка профиля */
+.profile__tab {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Контент вкладки */
+.profile-tab__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ===== Личная информация ===== */
+
+/* Сетки полей */
+.personal-content__text-inputs,
+.personal-content__additional-inputs,
+.personal-content__save-changes,
+.personal-content__account-control {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 12px;
+}
+
+/* Блок пола и аватара */
+.personal-content__radio-sex,
+.personal-content__avatar-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Радиокнопки */
+.radio-sex__options {
+    display: flex;
+    gap: 16px;
+}
+
+/* Один вариант выбора */
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    accent-color: var(--accent2);
+}
+
+/* Кнопка загрузки аватара */
+.avatar-upload__button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Блок управления аккаунтом */
+.account-control__change-password {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Кнопка смены пароля */
+.account-control__change-password-show {
+    color: var(--dark-gray);
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+
+/* Наведение */
+.account-control__change-password-show:hover {
+    text-decoration: underline;
+    color: var(--accent2);
+}
+
+/* Кнопка удаления аккаунта */
+.account-control__delete-account {
+    color: var(--error);
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Наведение */
+.account-control__delete-account:hover {
+    text-decoration: underline;
+}
+
+/* ===== Фильтры ===== */
+
+.profile-tab__filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ===== Уведомления ===== */
+
+/* Кнопки управления уведомлениями */
+.profile-notifications__notification-controllers {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Карточка уведомления */
+.notification-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0;
+    border-top: 2px solid var(--pastel-yellow);
+    gap: 12px;
+}
+
+/* Прочитанное уведомление */
+.notification-card--read .notification-card__marker {
+    background-color: var(--light-gray);
+}
+
+/* Левая часть */
+.notification-card__left-container {
+
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Маркер уведомления */
+.notification-card__marker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent1);
+    flex-shrink: 0;
+}
+
+/* Текст уведомления */
+.notification-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+}
+
+/* Правая часть */
+.notification-card__right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ===== Заказы ===== */
+
+/* Карточка заказа */
+.order-card {
+    border-top: 2px solid var(--pastel-yellow);
+    padding: 16px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Информация о заказе */
+.order-card__order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+/* Детали заказа */
+.order-card__order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Список товаров */
+.order-card__order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Горизонтальный список товаров */
+.order-card__order-items-list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+/* Изображение товара */
+.order-item img {
+    border-radius: 4px;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ===== Отзывы ===== */
+
+/* Карточка отзыва */
+.profile-review-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-top: 2px solid var(--pastel-yellow);
+}
+
+/* Изображение товара */
+.profile-review-card__image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Контент отзыва */
+.profile-review-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+/* Статус модерации */
+.review-status-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Цвета статусов */
+.review-status-badge--approved {
+    color: var(--success);
+}
+
+.review-status-badge--moderation {
+    color: var(--warning);
+}
+
+.review-status-badge--rejected {
+    color: var(--error);
+}
+
+/* ===== Адаптация ===== */
+
+/* Планшеты */
+@media (max-width: 1279px) {
+
+    .profile__main {
+        gap: 16px;
+    }
+
+    /* Навигация на всю ширину */
+    .profile__nav {
+        grid-column: 1 / -1;
+    }
+
+    .profile__content {
+        grid-column: 1 / -1;
+    }
+
+    /* Кнопка назад видна */
+    .profile__back-btn {
+        display: flex !important;
+    }
+
+    /* Уменьшение расстояний */
+    .personal-content__text-inputs,
+    .personal-content__additional-inputs,
+    .personal-content__save-changes,
+    .personal-content__account-control {
+        column-gap: 16px;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 767px) {
+
+    /* Поля в одну колонку */
+    .personal-content__text-inputs,
+    .personal-content__additional-inputs,
+    .personal-content__save-changes,
+    .personal-content__account-control {
+        grid-template-columns: 1fr;
+    }
+
+    /* Заказ вертикально */
+    .order-card {
+        flex-direction: column;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1280px) {
+
+    /* Кнопка назад скрыта */
+    .profile__back-btn {
+        display: none !important;
+    }
+
+    .profile__content {
+        display: block !important;
+    }
+
+    .profile__nav {
+        display: flex !important;
+    }
+}

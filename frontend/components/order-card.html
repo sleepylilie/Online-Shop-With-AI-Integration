@@ -1,0 +1,55 @@
+<!--
+Шаблон карточки заказа в личном кабинете
+-->
+
+<div class="order-card">
+  <!-- Блок информации о заказе -->
+  <div class="order-card__order-info">
+    <!-- Номер заказа -->
+    <p class="text__button">
+      Заказ №
+      <span id="order-card__order-number"></span>
+    </p>
+
+    <!-- Основные данные заказа -->
+    <div class="order-card__order-details">
+      <!-- Дата оформления -->
+      <p class="text__body-smaller">
+        Дата заказа:
+        <span id="order-card__order-date"> ДД.ММ.ГГГГ </span>
+      </p>
+
+      <!-- Итоговая стоимость -->
+      <p class="text__body-smaller">
+        Стоимость:
+        <span id="order-card__order-price"> 0 ₽ </span>
+      </p>
+
+      <!-- Статус заказа -->
+      <p class="text__body-smaller">
+        Статус:
+        <span id="order-card__order-status"></span>
+      </p>
+    </div>
+
+    <!-- Кнопка оценки товаров -->
+    <button class="button__accent1-with-icon" id="order-card__rate-order-items">
+      <img class="icon" src="../assets/icons/icon_star-outline-white.svg" />
+
+      <p class="text__button">Оценить товар</p>
+    </button>
+  </div>
+
+  <!-- Список товаров заказа -->
+  <div class="order-card__order-items">
+    <p class="text__button">Товары</p>
+
+    <!-- Контейнер товаров -->
+    <div class="order-card__order-items-list">
+      <!-- Карточка одного товара -->
+      <div class="order-item">
+        <img src="" />
+      </div>
+    </div>
+  </div>
+</div>

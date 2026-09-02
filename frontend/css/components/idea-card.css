@@ -1,0 +1,39 @@
+/* 
+=========
+Стили карточки идеи
+=========
+Файл отвечает за:
+- оформление карточки идеи,
+- отображение изображения и текста,
+- эффекты при наведении,
+- расположение элементов внутри карточки
+*/
+
+/* Основной контейнер карточки */
+.idea-card {
+    min-width: fit-content;
+    padding: 0;
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Эффект при наведении */
+.idea-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 10px rgba(44, 44, 44, 0.1);
+}
+
+/* Изображение идеи */
+.idea-card img {
+    width: 100%;
+}
+
+/* Дополнительная информация */
+.idea-card #idea-card__attributes {
+    color: var(--dark-gray);
+}

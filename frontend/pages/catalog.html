@@ -1,0 +1,227 @@
+<!--
+Страница каталога интернет-магазина.
+Файл показывает: 
+- подкатегории, 
+- фильтрацию и сортировку, 
+- список товаров.
+Основная логика работы каталога реализована в файле catalog.ts.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Каталог</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт логики каталога -->
+    <script type="module" src="/static/js/catalog.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="catalog__top">
+        <!-- Навигация и хлебные крошки -->
+        <div class="catalog__nav">
+          <!-- Хлебные крошки -->
+          <div class="top__bread-crumbs" id="catalog__breadcrumbs">
+            <a href="/" class="text__body-smaller">Главная</a>
+          </div>
+
+          <!-- Заголовок страницы -->
+          <h2 class="text__h2" id="catalog__title">Каталог</h2>
+        </div>
+
+        <!-- Сетка подкатегорий -->
+        <div
+          class="catalog__subcategory-grid"
+          id="catalog__subcategory-grid"
+          style="display: none"
+        >
+          <!-- Подкатегории добавляются через catalog.ts -->
+        </div>
+      </section>
+
+      <!-- Основной блок каталога -->
+      <section class="catalog__products">
+        <!-- Количество найденных товаров -->
+        <h3 class="text__h3 catalog__products-count">
+          Найдено <span id="catalog__product-count">0</span> товаров
+        </h3>
+
+        <!-- Панель управления каталогом -->
+        <div class="catalog__product-list-control">
+          <!-- Блок фильтров -->
+          <div class="filters__wrapper">
+            <!-- Кнопка открытия фильтров -->
+            <button class="filters__toggle-window" id="filters__toggle">
+              <span class="text__button">Фильтры</span>
+
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_arrow-down_gray.svg"
+                alt=""
+              />
+            </button>
+
+            <!-- Панель фильтрации -->
+            <div
+              class="product-list-control__filter"
+              id="catalog__filter-panel"
+            >
+              <!-- Верхняя часть панели -->
+              <div class="filters-panel__header">
+                <p class="text__button">Фильтры</p>
+
+                <!-- Кнопка закрытия панели -->
+                <button id="filters__close-panel" class="filters-panel__close">
+                  <img
+                    class="icon"
+                    src="/static/assets/icons/icon_arrow-up.svg"
+                    alt="Закрыть"
+                  />
+                </button>
+              </div>
+
+              <!-- Содержимое фильтров -->
+              <div class="filters-panel__content">
+                <!-- Фильтр подкатегорий -->
+                <div
+                  class="filters__filter-group"
+                  id="filter-group__subcategory"
+                >
+                  <p class="text__button">Подкатегория</p>
+
+                  <div
+                    class="filter-group__content"
+                    id="filter__subcategory-list"
+                  >
+                    <!-- Список подкатегорий загружается из БД -->
+                  </div>
+                </div>
+
+                <!-- Фильтр по цене -->
+                <div class="filters__filter-group">
+                  <p class="text__button">Цена</p>
+
+                  <div class="filter-group__content">
+                    <div class="filters__price-inputs">
+                      <!-- Минимальная цена -->
+                      <div class="text-input">
+                        <span class="text-input__title text__button"> От </span>
+
+                        <input
+                          class="text-input__field"
+                          type="number"
+                          id="filters__price-from"
+                          placeholder="1 ₽"
+                          min="0"
+                        />
+
+                        <p
+                          class="text__small-text text-input__message"
+                          id="price-from__message"
+                        ></p>
+                      </div>
+
+                      <!-- Максимальная цена -->
+                      <div class="text-input">
+                        <span class="text-input__title text__button"> До </span>
+
+                        <input
+                          class="text-input__field"
+                          type="number"
+                          id="filters__price-to"
+                          placeholder="10000 ₽"
+                          min="0"
+                        />
+
+                        <p
+                          class="text__small-text text-input__message"
+                          id="price-to__message"
+                        ></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Фильтр наличия -->
+                <div class="filters__filter-group">
+                  <p class="text__button">Наличие</p>
+
+                  <div class="filter-group__content">
+                    <label class="checkbox">
+                      <input type="checkbox" id="filter__in-stock" />
+                      Только в наличии
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Фильтр рейтинга -->
+                <div class="filters__filter-group">
+                  <p class="text__button">Рейтинг</p>
+
+                  <div class="filter-group__content">
+                    <label class="checkbox">
+                      <input type="checkbox" id="filter__high-rating" />
+                      4 звезды и выше
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Кнопки применения фильтров -->
+              <div class="filters-panel__actions">
+                <button class="text__button" id="filters__apply">
+                  Применить
+                </button>
+
+                <button class="text__button" id="filters__reset">
+                  Сбросить
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Блок сортировки -->
+          <div class="product-list-control__sorter">
+            <select
+              id="catalog__sort-selector"
+              class="products__sort-select"
+              style="width: 100%"
+            >
+              <option value="newest" selected>Сначала новые</option>
+
+              <option value="price_asc">По возрастанию цены</option>
+
+              <option value="price_desc">По убыванию цены</option>
+
+              <option value="rating">По рейтингу</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Сетка карточек товаров -->
+        <div class="catalog-product-grid" id="catalog__product-list">
+          <!-- Карточки товаров добавляются через catalog.ts -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

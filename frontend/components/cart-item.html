@@ -1,0 +1,83 @@
+<!--
+Шаблон карточки товара в корзине.
+-->
+
+<template class="cart-item" data-cart-item-id="{{cart_item_id}}">
+  <!-- Левая часть карточки -->
+  <div class="cart-item__container-left">
+    <!-- Чекбокс выбора товара -->
+    <div class="cart-item__select">
+      <input
+        type="checkbox"
+        class="cart-item__checkbox"
+        id="cart-item-{{cart_item_id}}"
+      />
+
+      <!-- Стилизация чекбокса -->
+      <label
+        for="cart-item-{{cart_item_id}}"
+        class="cart-item__checkbox-label"
+      ></label>
+    </div>
+
+    <!-- Изображение товара -->
+    <div class="cart-item__image">
+      <img src="{{product_image}}" alt="{{product_name}}" />
+    </div>
+
+    <!-- Информация о товаре -->
+    <div class="cart-item__info">
+      <!-- Название товара -->
+      <div class="cart-item__header">
+        <p class="cart-item__title text__button">{{product_name}}</p>
+      </div>
+
+      <!-- Кнопки действий -->
+      <div class="cart-item__actions">
+        <!-- Добавление в избранное -->
+        <button class="cart-item__favorite" title="В избранное">
+          <img
+            class="icon"
+            src="../assets/icons/icon_liked.svg"
+            alt="В избранное"
+          />
+        </button>
+
+        <!-- Удаление товара -->
+        <button class="cart-item__remove" title="Удалить">
+          <img class="icon" src="../assets/icons/icon_bin.svg" alt="Удалить" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Правая часть карточки -->
+  <div class="cart-item__amount">
+    <!-- Блок цен -->
+    <div class="cart-item__prices">
+      <!-- Текущая цена -->
+      <p class="cart-item__price text__price">{{product_price}} ₽</p>
+
+      <!-- Старая цена -->
+      <p class="cart-item__old-price text__body-smaller">
+        {{product_old_price}} ₽
+      </p>
+    </div>
+
+    <!-- Счетчик количества -->
+    <div class="cart-item__quantity">
+      <!-- Кнопка уменьшения количества -->
+      <button class="quantity__button quantity__button-minus">
+        <img class="icon" src="../assets/icons/icon_minus_gray.svg" alt="" />
+      </button>
+
+      <!-- Количество товара -->
+      <span class="quantity__value text__body-smaller"> {{quantity}} </span>
+
+      <!-- Кнопка увеличения количества -->
+      <button class="quantity__button quantity__button-plus">
+        <img class="icon" src="../assets/icons/icon_plus_gray.svg" alt="" />
+      </button>
+    </div>
+  </div>
+</template>

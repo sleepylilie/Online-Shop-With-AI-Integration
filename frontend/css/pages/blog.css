@@ -1,0 +1,104 @@
+/* 
+=========
+Стили страницы блога
+=========
+Файл отвечает за:
+- оформление фильтров публикаций,
+- отображение карточек блога,
+- настройку сетки публикаций,
+- адаптацию страницы под разные экраны
+*/
+
+/* Верхняя часть страницы */
+.blog__top {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Контейнер кнопок фильтра */
+.blog__filter {
+    display: flex;
+    gap: 12px;
+
+    /* Перенос кнопок на новую строку */
+    flex-wrap: wrap;
+}
+
+/* Кнопка фильтра */
+.blog-filter__category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px 16px;
+    border-radius: 3px;
+    background-color: var(--light-yellow);
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid transparent;
+    cursor: pointer;
+
+    /* Плавное изменение цветов */
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+}
+
+/* Активная кнопка фильтра */
+.blog-filter__category.active {
+    background-color: var(--pastel-green);
+    border-color: var(--accent2);
+}
+
+/* Эффект при наведении */
+.blog-filter__category:hover:not(.active) {
+    background-color: var(--pastel-yellow);
+}
+
+/* Основной блок страницы */
+.blog__main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Сетка карточек публикаций */
+#blog__grid {
+    display: grid;
+    gap: 20px;
+
+    /* Три карточки в ряд */
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+/* Планшетная версия */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+    #blog__grid {
+        /* Две карточки в ряд */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+
+    /* Уменьшение кнопок фильтра */
+    .blog-filter__category {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+
+    #blog__grid {
+        /* Одна карточка в ряд */
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+    }
+}

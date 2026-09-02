@@ -1,0 +1,252 @@
+/* 
+=========
+Стили главной страницы
+=========
+Файл отвечает за:
+- главный баннер,
+- секции товаров и блога,
+- горизонтальный скролл карточек,
+- отображение категорий,
+- адаптацию страницы под разные экраны
+*/
+
+
+/* ===== Главный баннер ===== */
+
+.home__main-banner {
+    width: 100%;
+    /* Фоновое изображение баннера */
+    background-image: url('/static/assets/images/home_art-supplies.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 80px 20px;
+    /* Адаптивная высота баннера */
+    min-height: clamp(300px, 70vh, 600px);
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Белый текст с тенью поверх изображения */
+.home__main-banner h1,
+.home__main-banner p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    color: var(--white);
+}
+
+/* Кнопка перехода к генератору идей */
+.main-banner__generate-idea {
+    background-color: var(--accent2);
+    border-radius: 4px;
+    color: var(--white);
+    padding: 10px 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    transition: opacity 0.2s;
+}
+
+/* Эффект при наведении */
+.main-banner__generate-idea:hover {
+    opacity: 0.88;
+}
+
+
+/* ===== Секции товаров ===== */
+
+/* Блоки скидок и новинок */
+.home__sales,
+.home__new-products {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* Заголовки секций */
+.home__sales h3,
+.home__new-products h3 {
+    width: 100%;
+}
+
+/* 
+Контейнер горизонтального скролла для позиционирования стрелок
+*/
+.product-list-scroll-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Горизонтальный список карточек */
+.product-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Скрытие полосы прокрутки */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+}
+
+/* Скрытие scrollbar в Chrome */
+.product-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Карточка товара внутри скролла */
+.product-list .product-card {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    /* 4 карточки на десктопе */
+    width: calc((100% - 60px) / 4);
+
+    /* Планшет */
+    @media (min-width: 768px) and (max-width: 1279px) {
+        width: calc((100% - 20px) / 2);
+    }
+
+    /* Телефон */
+    @media (max-width: 767px) {
+        width: 85%;
+    }
+}
+
+/* ===== Стрелки скролла ===== */
+
+/* Кнопки перелистывания */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-background);
+    border: 2px solid var(--dark-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Тень кнопки */
+    box-shadow: 0 2px 8px rgba(44, 44, 44, 0.15);
+    transition:
+        opacity 0.2s,
+        box-shadow 0.2s;
+}
+
+/* Наведение на стрелку */
+.scroll-arrow:hover {
+    box-shadow: 0 4px 12px rgba(44, 44, 44, 0.2);
+}
+
+/* Скрытая стрелка */
+.scroll-arrow.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Положение стрелок */
+.scroll-arrow--left {
+    left: -20px;
+}
+
+.scroll-arrow--right {
+    right: -20px;
+}
+
+
+/* ===== Секция категорий ===== */
+
+.home__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+/* Сетка категорий */
+.categories__grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+
+    /* Планшет */
+    @media (min-width: 768px) and (max-width: 1279px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Телефон */
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+
+/* ===== Секция блога ===== */
+
+.home__blog {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+/* Заголовок-ссылка секции */
+.product-list__header {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    width: fit-content;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+/* Наведение на заголовок */
+.product-list__header:hover {
+    opacity: 0.75;
+}
+
+/* Сетка публикаций */
+.blog__blog-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+
+    /* Планшет */
+    @media (min-width: 768px) and (max-width: 1279px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* Телефон */
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+    }
+}
+
+
+/* ===== Иконки ===== */
+
+.icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}

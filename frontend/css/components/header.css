@@ -1,0 +1,631 @@
+/* 
+=========
+Стили шапки сайта
+=========
+Файл отвечает за:
+- оформление верхней части сайта,
+- навигацию и поиск,
+- работу меню каталога,
+- отображение адаптивного мобильного меню
+*/
+
+/* Основной контейнер шапки */
+header {
+    display: grid;
+    height: 156px;
+    width: 100%;
+    grid-template-rows: 50% 50%;
+    box-shadow: 0 0 10px rgba(107, 107, 107, 0.3);
+    background-color: var(--color-background);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Разделительная линия между частями шапки */
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--light-gray);
+}
+
+/* Контейнер секции шапки */
+.header-section {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+/* ===== Логотип ===== */
+
+.logo {
+    grid-column: span 2;
+    justify-self: start;
+    cursor: pointer;
+}
+
+.logo-icon {
+    width: 100px;
+    height: auto;
+}
+
+/* ===== Поиск ===== */
+
+.search_bar {
+    grid-column: span 6;
+    display: grid;
+    align-items: center;
+    justify-items: end;
+}
+
+/* Поле поиска */
+.input__search-bar {
+    justify-self: stretch;
+    width: 100%;
+    height: 48px;
+    border: 2px solid var(--dark-gray);
+    border-radius: 50px;
+    padding: 0 50px 0 24px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--dark-gray);
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background-color: var(--color-background);
+}
+
+/* Активное поле поиска */
+.input__search-bar:focus {
+    border-color: var(--black);
+    color: var(--black);
+    outline: none;
+}
+
+/* Кнопка поиска */
+.button__search-bar {
+    height: 24px;
+    padding-right: 20px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ===== Верхние кнопки ===== */
+
+.top_buttons {
+    grid-column: span 4;
+    justify-self: end;
+    display: flex;
+    gap: 20px;
+}
+
+/* Кнопка в верхнем меню */
+.top_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent1);
+    height: max-content;
+}
+
+/* Наведение на кнопку */
+.top_button:hover {
+    opacity: 0.8;
+}
+
+/* ===== Каталог ===== */
+
+.catalog {
+    grid-column: span 2;
+    display: grid;
+    justify-content: start;
+}
+
+/* Кнопка открытия каталога */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--accent1);
+    color: var(--white);
+    border-radius: 4px;
+    height: 44px;
+    width: fit-content;
+    transition: opacity 0.2s;
+}
+
+/* Наведение */
+.menu:hover {
+    opacity: 0.9;
+}
+
+/* ===== Навигация ===== */
+
+nav {
+    grid-column: span 6;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Наведение на ссылки */
+nav a:hover {
+    color: var(--accent1);
+}
+
+/* ===== Контакты ===== */
+
+.contact_information {
+    grid-column: span 4;
+    display: grid;
+    justify-content: end;
+}
+
+/* Цвет дополнительного текста */
+.contact_information .text__body-smaller {
+    color: var(--dark-gray);
+}
+
+/* ===== Иконки ===== */
+
+.icon {
+    height: 24px;
+    width: 24px;
+}
+
+/* ===== Поп-ап поиска ===== */
+
+/* Контейнер окна поиска */
+.search-popup {
+    display: none;
+    position: fixed;
+    top: 156px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-background);
+    z-index: 200;
+    padding: 24px 32px;
+    overflow-y: auto;
+}
+
+/* Верхняя часть поиска */
+.search-popup__header {
+    padding-bottom: 12px;
+}
+
+/* Контейнер подсказок */
+.search-popup__suggestions {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Элемент подсказки */
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid var(--light-gray);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Manrope', sans-serif;
+    text-align: left;
+}
+
+/* Наведение на подсказку */
+.suggestion-item:hover {
+    background-color: var(--light-gray);
+}
+
+/* ===== Поп-ап каталога ===== */
+
+/* Контейнер каталога */
+.catalog-popup {
+    display: none;
+    position: fixed;
+    top: 156px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-background);
+    z-index: 200;
+    overflow-y: auto;
+}
+
+/* Открытый каталог */
+.catalog-popup.active {
+    display: block;
+}
+
+/* Основной контейнер каталога */
+.catalog-popup__container {
+    max-width: 1280px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px 32px 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    align-content: start;
+}
+
+/* ===== Список категорий ===== */
+
+.catalog-categories__list {
+    grid-column: span 3;
+    border-right: 2px solid var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Элемент категории */
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-left: 3px solid transparent;
+}
+
+/* Наведение */
+.category-item:hover {
+    background-color: var(--pastel-yellow);
+}
+
+/* Активная категория */
+.category-item.active {
+    background-color: var(--pastel-yellow);
+    border-left-color: var(--accent1);
+}
+
+/* Иконка категории */
+.category-item__icon {
+    flex-shrink: 0;
+}
+
+.categoriesIcon {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+/* Название категории */
+.categoriesName {
+    flex: 1;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* ===== Подкатегории ===== */
+
+.catalog-subcategories {
+    grid-column: span 9;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Верхняя часть блока */
+.catalog-subcategories__header {
+    padding: 0 20px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Кнопка "Назад" */
+.catalog-back-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Наведение */
+.catalog-back-btn:hover {
+    text-decoration: underline;
+}
+
+/* Список подкатегорий */
+.catalog-subcategories__list {
+    flex: 1;
+    padding: 0 20px 20px;
+}
+
+/* Сетка подкатегорий */
+.subcategories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+/* Ссылка подкатегории */
+.subcategory-link {
+    display: block;
+    padding: 10px 16px;
+    background-color: transparent;
+    color: var(--black);
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    transition: all 0.2s;
+}
+
+/* Наведение */
+.subcategory-link:hover {
+    color: var(--accent2);
+    text-decoration: underline;
+}
+
+/* Заглушка каталога */
+.catalog-placeholder {
+    color: var(--dark-gray);
+    text-align: center;
+    padding: 40px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+}
+
+/* Индикатор загрузки */
+.catalog-loader {
+    text-align: center;
+    padding: 40px;
+    color: var(--dark-gray);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+}
+
+/* ===== Адаптация ===== */
+
+/* Десктоп */
+@media (min-width: 1280px) {
+
+    .header-section:last-child .search_bar {
+        display: none;
+    }
+
+    .mobile-tapbar {
+        display: none;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+    .header-section {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 16px;
+        padding: 0 24px;
+    }
+
+    .logo {
+        grid-column: span 2;
+    }
+
+    .search_bar {
+        grid-column: span 4;
+    }
+
+    .top_buttons {
+        grid-column: span 2;
+        gap: 12px;
+    }
+
+    .catalog {
+        grid-column: span 2;
+    }
+
+    nav {
+        grid-column: span 6;
+        gap: 28px;
+    }
+
+    .contact_information {
+        display: none;
+    }
+
+    .top_button span {
+        display: none;
+    }
+
+    .top_button {
+        gap: 0;
+    }
+
+    .header-section:last-child .search_bar {
+        display: none;
+    }
+
+    .mobile-tapbar {
+        display: none;
+    }
+
+    /* Контейнер каталога */
+    .catalog-popup__container {
+        grid-template-columns: repeat(8, 1fr);
+        padding: 20px 24px 0;
+        gap: 16px;
+    }
+
+    .catalog-categories__list {
+        border-right: none;
+        grid-column: span 8;
+    }
+
+    .catalog-subcategories {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--color-background);
+        z-index: 10;
+    }
+
+    .catalog-subcategories.active {
+        display: flex;
+    }
+
+    .catalog-back-btn {
+        display: flex;
+    }
+
+    .subcategories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/* Телефоны */
+@media (max-width: 767px) {
+
+    .header-section {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding: 0 20px;
+    }
+
+    .logo {
+        grid-column: span 2;
+    }
+
+    .header-section:first-child .search_bar {
+        display: none;
+    }
+
+    .top_buttons {
+        grid-column: span 2;
+        justify-self: end;
+        gap: 20px;
+    }
+
+    .top_button span {
+        display: none;
+    }
+
+    .catalog {
+        grid-column: span 1;
+    }
+
+    .menu {
+        padding: 8px;
+    }
+
+    .menu p {
+        display: none;
+    }
+
+    nav,
+    .contact_information {
+        display: none;
+    }
+
+    .search_bar {
+        grid-column: span 3;
+    }
+
+    .input__search-bar {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    /* Контейнер каталога */
+    .catalog-popup__container {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 20px 20px 0;
+        gap: 12px;
+    }
+
+    .catalog-categories__list {
+        border-right: none;
+        grid-column: span 4;
+    }
+
+    .catalog-subcategories {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--color-background);
+        z-index: 10;
+    }
+
+    .catalog-subcategories.active {
+        display: flex;
+    }
+
+    .catalog-back-btn {
+        display: flex;
+    }
+
+    .subcategories-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    /* Нижняя мобильная панель */
+    .mobile-tapbar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--color-background);
+        padding: 8px 20px;
+        border-top: 1px solid var(--light-gray);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    /* Кнопка панели */
+    .tapbar-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--black);
+        padding: 4px 0;
+    }
+
+    .tapbar-item span {
+        font-weight: 600;
+    }
+}
+
+/* Принудительное открытие каталога */
+.catalog-popup--open {
+    display: block !important;
+}

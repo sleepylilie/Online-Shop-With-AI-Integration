@@ -1,0 +1,58 @@
+/* 
+=========
+Стили карточки заказа
+=========
+Файл отвечает за:
+- отображение информации о заказе,
+- список товаров в заказе,
+- расположение блоков внутри карточки,
+- оформление изображений товаров
+*/
+
+/* Основной контейнер карточки */
+.order-card {
+    border-top: 2px solid var(--pastel-yellow);
+    width: 100%;
+    height: fit-content;
+    padding: 12px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Блок информации о заказе */
+.order-card__order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 180px;
+    width: fit-content;
+}
+
+/* Детали заказа */
+.order-card__order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Блок товаров заказа */
+.order-card__order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Горизонтальный список товаров */
+.order-card__order-items-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: scroll;
+}
+
+/* Изображение товара */
+.order-item img {
+    border-radius: 3px;
+    width: 64px;
+    height: 64px;
+}

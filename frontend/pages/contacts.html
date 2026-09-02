@@ -1,0 +1,102 @@
+<!--
+Страница с контактной информацией.
+Файл содержит основные способы связи
+с владелицей проекта: телефон,
+электронную почту и социальные сети.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Контакты</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="contacts__top">
+        <!-- Заголовок страницы -->
+        <h2 class="text__h2">Контакты</h2>
+      </section>
+
+      <!-- Основной контент страницы -->
+      <section class="contacts__main">
+        <!-- Краткое описание -->
+        <p class="text__body-smaller">
+          Если вам необходимо связаться со владелицей проекта, вы можете сделать
+          это по указанным ниже каналам связи.
+        </p>
+
+        <!-- Список контактов -->
+        <div class="contacts__list">
+          <!-- Блок телефона -->
+          <div class="contacts__contact">
+            <h4 class="text__price">Телефон</h4>
+
+            <div class="contact__content">
+              <p class="contact__title text__body-smaller">Номер телефона</p>
+
+              <p class="text__body-smaller">+7 (981) 894-64-52</p>
+            </div>
+          </div>
+
+          <!-- Блок электронной почты -->
+          <div class="contacts__contact">
+            <h4 class="text__price">Электронная почта</h4>
+
+            <div class="contact__content">
+              <p class="contact__title text__body-smaller">
+                Адрес электронной почты
+              </p>
+
+              <!-- Ссылка для отправки письма -->
+              <a class="text__body-smaller" href="mailto:liliesch55@gmail.com">
+                liliesch55@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Блок социальных сетей -->
+          <div class="contacts__contact">
+            <h4 class="text__price">Социальные сети</h4>
+
+            <!-- Ссылка на Вконтакте -->
+            <div class="contact__content">
+              <p class="contact__title text__body-smaller">Вконтакте</p>
+
+              <a class="text__body-smaller" href="https://vk.com/tchnnu_dts">
+                vk.com/tchnnu_dts
+              </a>
+            </div>
+
+            <!-- Ссылка на Telegram -->
+            <div class="contact__content">
+              <p class="contact__title text__body-smaller">Telegram</p>
+
+              <a class="text__body-smaller" href="https://t.me/sleepylilie">
+                @sleepylilie
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!--
+Страница блога интернет-магазина. 
+Файл содержит список публикаций: статей, новостей и уроков.
+Контент и фильтрация загружаются динамически через blog.ts.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Блог</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт для работы страницы блога -->
+    <script type="module" src="/static/js/blog.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="blog__top">
+        <!-- Заголовок страницы -->
+        <h2 class="text__h2">Блог</h2>
+
+        <!-- Блок фильтрации публикаций -->
+        <div class="blog__filter">
+          <!-- Кнопка отображения всех публикаций -->
+          <button class="blog-filter__category active" data-type="all">
+            Все
+          </button>
+
+          <!-- Фильтр статей -->
+          <button class="blog-filter__category" data-type="article">
+            Статьи
+          </button>
+
+          <!-- Фильтр новостей -->
+          <button class="blog-filter__category" data-type="news">
+            Новости
+          </button>
+
+          <!-- Фильтр уроков -->
+          <button class="blog-filter__category" data-type="tutorial">
+            Уроки
+          </button>
+        </div>
+      </section>
+
+      <!-- Основной контент страницы -->
+      <section class="blog__main">
+        <!-- Количество найденных публикаций (меняется динамически) -->
+        <h3 class="text__h3">
+          Найдено <span id="blog__count">0</span> публикаций
+        </h3>
+
+        <!-- Сетка карточек публикаций загружается через blog.ts -->
+        <div id="blog__grid"></div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

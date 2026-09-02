@@ -1,0 +1,433 @@
+<!--
+Шаблон хедера сайта
+-->
+
+<!-- Основной блок хедера -->
+<header class="header">
+  <!-- Верхняя часть хедера -->
+  <section class="header-section">
+    <!-- Логотип сайта -->
+    <div class="logo" id="header__logo">
+      <img
+        class="logo-icon"
+        src="/static/assets/icons/icon_logo.svg"
+        alt="Хобби-маркет"
+      />
+    </div>
+
+    <!-- Поиск для десктопной версии -->
+    <div class="search_bar" id="header__search-desktop">
+      <input
+        type="text"
+        id="search-desktop"
+        class="input__search-bar"
+        placeholder="Поиск"
+        autocomplete="off"
+      />
+
+      <!-- Кнопка поиска -->
+      <button
+        class="button__search-bar"
+        id="header__search-btn-desktop"
+        aria-label="Найти"
+      >
+        <img src="/static/assets/icons/icon_search_gray.svg" alt="" />
+      </button>
+    </div>
+
+    <!-- Кнопки профиля, избранного и корзины -->
+    <div class="top_buttons">
+      <!-- Переход в профиль -->
+      <button class="top_button" id="header__btn-profile">
+        <img class="icon" src="/static/assets/icons/icon_profile.svg" alt="" />
+
+        <span class="text__button"> Профиль </span>
+      </button>
+
+      <!-- Переход в избранное -->
+      <button class="top_button" id="header__btn-favorites">
+        <img class="icon" src="/static/assets/icons/icon_liked.svg" alt="" />
+
+        <span class="text__button"> Избранное </span>
+      </button>
+
+      <!-- Переход в корзину -->
+      <button class="top_button" id="header__btn-cart">
+        <img class="icon" src="/static/assets/icons/icon_cart.svg" alt="" />
+
+        <span class="text__button"> Корзина </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Нижняя часть хедера -->
+  <section class="header-section">
+    <!-- Кнопка открытия каталога -->
+    <div class="catalog">
+      <button class="menu" id="catalog-btn">
+        <img
+          class="icon"
+          id="catalog-btn__icon"
+          src="/static/assets/icons/icon_menu.svg"
+          alt=""
+        />
+
+        <p class="text__button">Каталог</p>
+      </button>
+    </div>
+
+    <!-- Основная навигация -->
+    <nav>
+      <a class="text__button" href="/pages/idea-generator.html">
+        Генератор идей
+      </a>
+
+      <a class="text__button" href="/pages/blog.html"> Блог </a>
+
+      <a class="text__button" href="/pages/about-project.html"> О проекте </a>
+
+      <a class="text__button" href="/pages/contacts.html"> Контакты </a>
+    </nav>
+
+    <!-- Контактная информация -->
+    <div class="contact_information">
+      <p class="text__price">+7 (981) 894-64-52</p>
+
+      <p class="text__body-smaller">с 9 по 17 МСК</p>
+    </div>
+
+    <!-- Поиск для мобильной версии -->
+    <div class="search_bar" id="header__search-mobile">
+      <input
+        type="text"
+        id="search-mobile"
+        class="input__search-bar"
+        placeholder="Поиск"
+        autocomplete="off"
+      />
+
+      <button
+        class="button__search-bar"
+        id="header__search-btn-mobile"
+        aria-label="Найти"
+      >
+        <img src="/static/assets/icons/icon_search_gray.svg" alt="" />
+      </button>
+    </div>
+  </section>
+</header>
+
+<!-- Поп-ап поиска -->
+<div class="search-popup" id="search-popup">
+  <!-- Заголовок поп-апа -->
+  <div class="search-popup__header">
+    <p class="text__button">Часто ищут</p>
+  </div>
+
+  <!-- Популярные запросы -->
+  <div class="search-popup__suggestions">
+    <button class="suggestion-item">
+      <img src="/static/assets/icons/icon_search_gray.svg" alt="" />
+
+      <p class="text__body-smaller">акварель</p>
+    </button>
+
+    <button class="suggestion-item">
+      <img src="/static/assets/icons/icon_search_gray.svg" alt="" />
+
+      <p class="text__body-smaller">картина по номерам</p>
+    </button>
+  </div>
+</div>
+
+<!-- Поп-ап каталога -->
+<div id="catalog-popup" class="catalog-popup">
+  <div class="catalog-popup__container">
+    <!-- Список категорий -->
+    <div class="catalog-categories__list" id="categoriesList">
+      <div class="catalog-loader">Загрузка...</div>
+    </div>
+
+    <!-- Панель подкатегорий -->
+    <div class="catalog-subcategories" id="subcategoriesPanel">
+      <!-- Верхняя часть панели -->
+      <div
+        class="catalog-subcategories__header"
+        id="catalog-subcategories__header"
+        style="display: none"
+      >
+        <!-- Кнопка возврата -->
+        <button class="catalog-back-btn" id="backToCategoriesBtn">
+          <img src="/static/assets/icons/icon_arrow-left_swipe.svg" alt="" />
+
+          <span class="text__button"> Назад к категориям </span>
+        </button>
+
+        <!-- Название категории -->
+        <p class="text__price" id="selectedCategoryTitle"></p>
+      </div>
+
+      <!-- Список подкатегорий -->
+      <div class="catalog-subcategories__list" id="subcategoriesList">
+        <div class="catalog-placeholder">
+          Наведите на категорию, чтобы увидеть подкатегории
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Нижняя навигация для мобильной версии -->
+<div class="mobile-tapbar">
+  <!-- Главная -->
+  <button class="tapbar-item" data-page="home">
+    <img class="icon" src="/static/assets/icons/icon_home.svg" alt="" />
+
+    <span class="text__small-text"> Главная </span>
+  </button>
+
+  <!-- Генератор -->
+  <button class="tapbar-item" data-page="generator">
+    <img
+      class="icon"
+      src="/static/assets/icons/icon_idea-generator.svg"
+      alt=""
+    />
+
+    <span class="text__small-text"> Идеи </span>
+  </button>
+
+  <!-- Блог -->
+  <button class="tapbar-item" data-page="blog">
+    <img class="icon" src="/static/assets/icons/icon_blog.svg" alt="" /><span
+      class="text__small-text"
+      >Блог</span
+    >
+  </button>
+
+  <!-- О проекте -->
+  <button class="tapbar-item" data-page="about">
+    <img
+      class="icon"
+      src="/static/assets/icons/icon_about-project.svg"
+      alt=""
+    /><span class="text__small-text">О проекте</span>
+  </button>
+
+  <!-- Контакты -->
+  <button class="tapbar-item" data-page="contacts">
+    <img
+      class="icon"
+      src="/static/assets/icons/icon_contacts.svg"
+      alt=""
+    /><span class="text__small-text">Контакты</span>
+  </button>
+</div>
+
+<!-- Затемнение фона для поп-апов -->
+<div
+  id="auth-overlay"
+  style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 44, 44, 0.5);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  "
+></div>
+
+<!-- Поп-ап входа -->
+<div
+  class="login-popup"
+  id="popup__login"
+  style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 301;
+  "
+>
+  <!-- Верхняя часть -->
+  <div class="login__top">
+    <h3 class="text__h3">Вход в аккаунт</h3>
+
+    <!-- Кнопка закрытия -->
+    <button class="login__close" id="login__close-btn" title="Закрыть">
+      <img
+        class="icon"
+        src="/static/assets/icons/icon_close_black.svg"
+        alt="Закрыть"
+      />
+    </button>
+  </div>
+
+  <!-- Основное содержимое -->
+  <div class="login__main">
+    <!-- Поля формы -->
+    <div class="login__text-inputs">
+      <!-- Email -->
+      <div class="text-input">
+        <div class="text-input__title">Адрес электронной почты*</div>
+
+        <input
+          class="text-input__field"
+          type="email"
+          id="login__email"
+          placeholder="example@yandex.ru"
+          autocomplete="email"
+        />
+      </div>
+
+      <!-- Пароль -->
+      <div class="text-input">
+        <div class="text-input__title">Пароль*</div>
+
+        <input
+          class="text-input__field"
+          type="password"
+          id="login__password"
+          placeholder="Пароль"
+          autocomplete="current-password"
+        />
+      </div>
+    </div>
+
+    <!-- Кнопки -->
+    <div class="login__buttons">
+      <!-- Кнопка входа -->
+      <button class="text__button button__accent2-no-icon" id="login__submit">
+        Войти
+      </button>
+
+      <!-- Переход к регистрации -->
+      <p class="text__body-smaller">
+        Нет аккаунта?
+        <a href="#" id="login__go-to-register"> Зарегистрироваться </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Поп-ап регистрации -->
+<div
+  class="login-popup"
+  id="popup__register"
+  style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 301;
+  "
+>
+  <!-- Верхняя часть -->
+  <div class="login__top">
+    <h3 class="text__h3">Регистрация</h3>
+
+    <!-- Кнопка закрытия -->
+    <button class="login__close" id="register__close-btn" title="Закрыть">
+      <img
+        class="icon"
+        src="/static/assets/icons/icon_close_black.svg"
+        alt="Закрыть"
+      />
+    </button>
+  </div>
+
+  <!-- Основное содержимое -->
+  <div class="login__main">
+    <!-- Поля регистрации -->
+    <div class="login__text-inputs">
+      <!-- Имя -->
+      <div class="text-input">
+        <div class="text-input__title">Имя*</div>
+        <input
+          class="text-input__field"
+          type="text"
+          id="register__first-name"
+          placeholder="Иван"
+          autocomplete="given-name"
+        />
+        <p
+          class="text__small-text text-input__message"
+          id="register__first-name-msg"
+        ></p>
+      </div>
+
+      <!-- Email -->
+      <div class="text-input">
+        <div class="text-input__title">Адрес электронной почты*</div>
+        <input
+          class="text-input__field"
+          type="text"
+          id="register__email"
+          placeholder="example@yandex.ru"
+          autocomplete="email"
+        />
+        <p
+          class="text__small-text text-input__message"
+          id="register__email-msg"
+        ></p>
+      </div>
+
+      <!-- Пароль -->
+      <div class="text-input">
+        <div class="text-input__title">Пароль*</div>
+        <input
+          class="text-input__field"
+          type="password"
+          id="register__password"
+          placeholder="Минимум 6 символов"
+          autocomplete="new-password"
+        />
+        <p
+          class="text__small-text text-input__message"
+          id="register__password-msg"
+        ></p>
+      </div>
+
+      <!-- Подтверждение пароля -->
+      <div class="text-input">
+        <div class="text-input__title">Подтвердите пароль*</div>
+        <input
+          class="text-input__field"
+          type="password"
+          id="register__password-confirm"
+          placeholder="Повторите пароль"
+          autocomplete="new-password"
+        />
+        <p
+          class="text__small-text text-input__message"
+          id="register__password-confirm-msg"
+        ></p>
+      </div>
+
+      <!-- Общая ошибка от сервера -->
+      <p
+        class="text__small-text"
+        id="register__general-msg"
+        style="color: var(--error); display: none"
+      ></p>
+      <p class="text__body-smaller">* — поля обязательны для заполнения</p>
+    </div>
+
+    <!-- Кнопки -->
+    <div class="login__buttons">
+      <button
+        class="text__button button__accent2-no-icon"
+        id="register__submit"
+      >
+        Зарегистрироваться
+      </button>
+      <p class="text__body-smaller">
+        Есть аккаунт? <a href="#" id="register__go-to-login">Войти</a>
+      </p>
+    </div>
+  </div>
+</div>

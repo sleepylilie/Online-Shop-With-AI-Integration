@@ -1,0 +1,72 @@
+/* 
+=========
+Стили карточки отзыва
+=========
+Файл отвечает за:
+- оформление отзывов пользователей,
+- отображение информации об авторе,
+- отображение рейтинга,
+- расположение текста отзыва
+*/
+
+/* Основной контейнер карточки */
+.review-card {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Верхняя часть карточки */
+.review-info {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Информация о пользователе */
+.review-card__user-info {
+    display: flex;
+    gap: 8px;
+}
+
+/* Аватар пользователя */
+.review-card__user-info img {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+}
+
+/* Контейнер имени и рейтинга */
+.user-info__review-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Контейнер звезд рейтинга */
+.review__star-count {
+    display: flex;
+    gap: 0;
+}
+
+/* Иконки звезд */
+.review__star-count img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Дата публикации */
+#review__post-date {
+    color: var(--dark-gray);
+    text-align: right;
+}
+
+/* Текст отзыва */
+.review-content {
+    width: 100%;
+    height: fit-content;
+}

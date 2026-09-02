@@ -1,0 +1,92 @@
+/* 
+=========
+Стили страницы идеи
+=========
+Файл отвечает за:
+- отображение страницы отдельной идеи,
+- оформление изображения и текста,
+- отображение структуры контента,
+- адаптацию страницы под мобильные устройства
+*/
+
+/* Верхняя часть страницы */
+.idea-page__top {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Основной контейнер страницы */
+.idea-page__main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* ===== Изображение идеи ===== */
+
+.main__idea-image {
+    /* Ограничение ширины изображения */
+    width: min(800px, 100%);
+    /* Центрирование блока */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Изображение */
+.main__idea-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* ===== Текст идеи ===== */
+
+.main__idea-text {
+    /* Ограничение ширины текста */
+    width: min(800px, 100%);
+    /* Центрирование */
+    margin: 0 auto;
+    text-align: justify;
+    line-height: 1.7;
+}
+
+/* Заголовки внутри текста */
+.main__idea-text h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Абзацы */
+.main__idea-text p {
+    margin-bottom: 10px;
+}
+
+/* Списки */
+.main__idea-text ul,
+.main__idea-text ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Элементы списка */
+.main__idea-text li {
+    margin-bottom: 4px;
+}
+
+/* Выделенный текст */
+.main__idea-text strong {
+    font-weight: 600;
+}
+
+/* ===== Адаптация для мобильной версии ===== */
+
+@media (max-width: 767px) {
+
+    .main__idea-text {
+        font-size: 12px;
+    }
+}

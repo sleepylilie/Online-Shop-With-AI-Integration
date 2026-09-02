@@ -1,0 +1,172 @@
+<!--
+Шаблон формы генерации творческой идеи.
+-->
+
+<template class="generator-chat-generate">
+  <!-- ===== Выбор хобби ===== -->
+  <div class="generate__hobby-select">
+    <p class="text__body-smaller">Выберите хобби:</p>
+
+    <!-- Список категорий хобби -->
+    <div class="hobby-select__filter-list">
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__hudozhnikam"
+      >
+        🎨 Рисование
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__shite"
+      >
+        🪡 Шитье
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__vyshivanie"
+      >
+        🧵 Вышивание
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__vyazanie"
+      >
+        🧶 Вязание
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__valyanie"
+      >
+        🪡 Валяние
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__lepka"
+      >
+        🗿 Лепка
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__skrapbuking"
+      >
+        ✂️ Скрапбукинг
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__biseropletenie"
+      >
+        🪢 Бисероплетение
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__dekorirovanie"
+      >
+        🎀 Декорирование
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__mylovarenie"
+      >
+        🧼 Мыловарение
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__svechevarenie"
+      >
+        🕯️ Свечеварение
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__floristika"
+      >
+        🌸 Флористика
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__smola"
+      >
+        ✨ Эпоксидная смола
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-hobby__culinaria"
+      >
+        🍳 Кулинария
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== Выбор возрастной категории ===== -->
+  <div class="generate__age-select">
+    <p class="text__body-smaller">Выберите возрастную категорию:</p>
+
+    <div class="age-select__filter-list">
+      <button class="button__filter-category text__button" id="idea-age__all">
+        Все
+      </button>
+
+      <button class="button__filter-category text__button" id="idea-age__kids">
+        Дети
+      </button>
+
+      <button class="button__filter-category text__button" id="idea-age__young">
+        Молодежь
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-age__adults"
+      >
+        Взрослые
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== Выбор сложности ===== -->
+  <div class="generate__difficulty-select">
+    <p class="text__body-smaller">Выберите уровень сложности:</p>
+
+    <div class="difficulty-select__filter-list">
+      <button
+        class="button__filter-category text__button"
+        id="idea-difficulty__easy"
+      >
+        Легкий
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-difficulty__middle"
+      >
+        Средний
+      </button>
+
+      <button
+        class="button__filter-category text__button"
+        id="idea-difficulty__hard"
+      >
+        Сложный
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== Кнопка запуска генерации ===== -->
+  <div class="generate__button">
+    <button class="button__accent2-no-icon text__button" id="generate-idea">
+      Продолжить
+    </button>
+  </div>
+</template>

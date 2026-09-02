@@ -1,0 +1,37 @@
+/* 
+=========
+Стили сообщения генератора идей
+=========
+Файл отвечает за:
+- оформление сообщений в чате генератора,
+- отображение текста ответа,
+- расположение элементов внутри сообщения,
+- адаптацию текста под разные экраны
+*/
+
+/* Контейнер сообщения */
+.generator-chat-message {
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    padding: 20px;
+    width: min(800px, 100%);
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    font-family: 'Manrope';
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+
+    /* Размер текста на мобильных устройствах */
+    @media (max-width: 768px) {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}

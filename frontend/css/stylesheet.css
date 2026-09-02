@@ -1,0 +1,282 @@
+/* 
+=========
+Главный файл стилей проекта
+=========
+Файл отвечает за:
+- подключение стилей страниц и компонентов,
+- настройку шрифтов и цветовой палитры,
+- базовые стили сайта,
+- общие элементы интерфейса
+*/
+
+/* Подключение стилей страниц */
+@import '/static/css/pages/home.css';
+@import '/static/css/pages/catalog.css';
+@import '/static/css/pages/cart.css';
+@import '/static/css/pages/order.css';
+@import '/static/css/pages/order-status.css';
+@import '/static/css/pages/product.css';
+@import '/static/css/pages/change-password.css';
+@import '/static/css/pages/change-password-status.css';
+@import '/static/css/pages/blog-page.css';
+@import '/static/css/pages/blog.css';
+@import '/static/css/pages/contacts.css';
+@import '/static/css/pages/about-project.css';
+@import '/static/css/pages/profile.css';
+@import '/static/css/pages/idea-generator.css';
+@import '/static/css/pages/idea-page.css';
+
+/* Подключение стилей компонентов */
+@import '/static/css/components/header.css';
+@import '/static/css/components/footer.css';
+@import '/static/css/components/product-card.css';
+@import '/static/css/components/category-card.css';
+@import '/static/css/components/blog-card.css';
+@import '/static/css/components/text-input.css';
+@import '/static/css/components/cart-item.css';
+@import '/static/css/components/order-info.css';
+@import '/static/css/components/review-card.css';
+@import '/static/css/components/login-popup.css';
+@import '/static/css/components/buttons.css';
+@import '/static/css/components/rate-product.css';
+@import '/static/css/components/notification-card.css';
+@import '/static/css/components/order-card.css';
+@import '/static/css/components/profile-review-card.css';
+@import '/static/css/components/idea-card.css';
+@import '/static/css/components/generator-chat-message.css';
+@import '/static/css/components/generator-chat-after-gen.css';
+@import '/static/css/components/generator-chat-generate.css';
+
+/* Подключение шрифта Manrope */
+@font-face {
+    font-family: 'Manrope';
+    src: url('/static/assets/fonts/Manrope-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('/static/assets/fonts/Manrope-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('/static/assets/fonts/Manrope-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('/static/assets/fonts/Manrope-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Цветовая палитра сайта */
+:root {
+  --color-background: #FEF9F0;
+  --black: #2C2C2C;
+  --light-gray: #F5F0E8;
+  --dark-gray: #6B6B6B;
+  --white: #FFFEFD;
+  --success: #6C9E6C;
+  --warning: #FE9D20;
+  --error: #C95A5A;
+  --accent1: #EC7357;
+  --accent2: #2D93AD;
+  --pastel-yellow: #F5E5C8;
+  --pastel-green: #D4E5E0;
+  --dark-yellow: #B9AF9E;
+  --light-yellow: #FFF3DD;
+}
+
+/* Стили для заголовков и текста */
+.text__h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+.text__h2 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.text__h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.text__price {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+}
+
+.text__accent {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.text__button {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.text__body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.text__body-smaller {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.text__small-text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+/* Адаптация размера текста для мобильной версии */
+@media (max-width: 767px) {
+    .text__h1 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .text__h2 {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .text__h3 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .text__price {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .text__accent {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .text__button {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .text__body {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .text__body-smaller {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .text__small-text {
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
+
+/* Сброс стандартных отступов и настройка размеров блоков */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Высота всей страницы */
+html {
+    height: 100%;
+}
+
+/* Базовые стили страницы */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--color-background);
+    color: var(--black);
+    scroll-behavior: smooth;
+}
+
+/* Основная сетка контента */
+.content-grid {
+    display: grid;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    align-self: start;
+
+    /* Сетка для мобильной версии */
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding: 0 20px;
+    }
+
+    /* Сетка для планшетов */
+    @media (min-width: 768px) and (max-width: 1279px) {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 16px;
+        padding: 0 24px;
+    }
+
+    /* Сетка для десктопа */
+    @media (min-width: 1280px) {
+        padding: 0 32px;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Все основные секции занимают всю ширину сетки */
+.content-grid > * {
+    grid-column: 1 / -1;
+    align-self: start;
+}
+
+/* Базовый стиль ссылок */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Базовый стиль кнопок */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Базовый стиль изображений */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

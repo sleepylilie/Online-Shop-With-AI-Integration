@@ -1,0 +1,87 @@
+<!--
+Страница отдельной публикации блога.
+Файл используется для отображения статьи, новости или урока. 
+Основное содержимое загружается динамически с помощью blog-page.ts.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Блог</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт загрузки данных публикации -->
+    <script type="module" src="/static/js/blog-page.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="blog-page__top">
+        <!-- Хлебные крошки -->
+        <div class="top__bread-crumbs" id="blog-page__breadcrumbs">
+          <a href="/pages/blog.html" class="text__body-smaller">Блог</a>
+
+          <p class="text__body-smaller">›</p>
+
+          <!-- Тип публикации -->
+          <span class="text__body-smaller" id="blog-page__type-crumb"></span>
+        </div>
+
+        <!-- Заголовок статьи (загружается динамически) -->
+        <h2 class="text__h2" id="blog-page__title"></h2>
+      </section>
+
+      <!-- Основной контент публикации загружается через blog-page.ts -->
+      <section class="blog-page__main">
+        <!-- Информация о публикации -->
+        <div class="main__blog-info">
+          <!-- Дата публикации -->
+          <p class="text__small-text" id="blog-page__date"></p>
+
+          <!-- Кнопка поделиться -->
+          <button class="blog-page__share" id="blog-page__share-btn">
+            <img
+              class="icon"
+              src="/static/assets/icons/icon_share_gray.svg"
+              alt=""
+            />
+
+            <p class="text__button">Поделиться</p>
+          </button>
+        </div>
+
+        <!-- Изображение публикации -->
+        <div
+          class="main__blog-image"
+          id="blog-page__image-container"
+          style="display: none"
+        >
+          <img id="blog-page__image" src="" alt="" />
+        </div>
+
+        <!-- Полный текст публикации -->
+        <div
+          class="main__blog-text text__body-smaller"
+          id="blog-page__content"
+        ></div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

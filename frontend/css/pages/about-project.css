@@ -1,0 +1,48 @@
+/* 
+=========
+Стили страницы "О проекте" и "О создательнице проекта
+=========
+Файл отвечает за:
+- оформление информационных страниц,
+- расположение текстовых блоков,
+- настройку отступов,
+- оформление ссылок и текста
+*/
+
+/* Верхняя секция страницы */
+.about-project__top {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Основной контейнер контента */
+.about-project__main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-bottom: 20px;
+
+    /* Ограничение ширины текста для удобства чтения */
+    width: min(700px, 100%);
+}
+
+/* Отдельный информационный блок */
+.about-project__section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    /* Выравнивание текста по ширине */
+    text-align: justify;
+}
+
+/* Цвет ссылок внутри разделов */
+.about-project__section a {
+    color: var(--accent2);
+}
+
+/* Эффект при наведении на ссылку */
+.about-project__section a:hover {
+    text-decoration: underline;
+}

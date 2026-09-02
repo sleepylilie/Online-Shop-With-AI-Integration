@@ -1,0 +1,389 @@
+<!--
+Страница оформления заказа.
+Файл содержит форму ввода данных получателя,
+адреса доставки, времени доставки и способа оплаты.
+Также отображается итоговая стоимость заказа.
+Основная логика работы реализована в order.ts.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Оформление заказа</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Стили страницы оформления заказа -->
+    <link rel="stylesheet" href="/static/css/pages/order.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт логики оформления заказа -->
+    <script type="module" src="/static/js/order.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="order__top">
+        <!-- Заголовок страницы -->
+        <h2 class="text__h2">Оформление заказа</h2>
+
+        <!-- Ссылка возврата в корзину -->
+        <a href="/pages/cart.html" class="text__body-smaller">
+          Вернуться в корзину
+        </a>
+      </section>
+
+      <!-- Основной блок заказа -->
+      <section class="order__info">
+        <!-- Левая часть с формой -->
+        <div class="order__inputs">
+          <!-- ===== Данные получателя ===== -->
+          <div class="order__input-group">
+            <div class="input-group__title">
+              <p class="text__price">Данные о получателе</p>
+            </div>
+
+            <div class="input-group__input-list">
+              <!-- Использование данных профиля -->
+              <label class="checkbox">
+                <input type="checkbox" id="order__use-profile-info" />
+
+                Использовать информацию из личного кабинета
+              </label>
+
+              <!-- Поле фамилии -->
+              <div class="text-input">
+                <div class="text-input__title">Фамилия*</div>
+
+                <input
+                  class="text-input__field"
+                  type="text"
+                  id="order__last-name"
+                  placeholder="Иванов"
+                />
+
+                <!-- Сообщение ошибки -->
+                <p
+                  class="text__small-text text-input__message"
+                  id="order__last-name-msg"
+                ></p>
+              </div>
+
+              <!-- Поле имени -->
+              <div class="text-input">
+                <div class="text-input__title">Имя*</div>
+
+                <input
+                  class="text-input__field"
+                  type="text"
+                  id="order__first-name"
+                  placeholder="Иван"
+                />
+
+                <p
+                  class="text__small-text text-input__message"
+                  id="order__first-name-msg"
+                ></p>
+              </div>
+
+              <!-- Поле электронной почты -->
+              <div class="text-input">
+                <div class="text-input__title">Адрес электронной почты*</div>
+
+                <input
+                  class="text-input__field"
+                  type="email"
+                  id="order__email"
+                  placeholder="example@yandex.ru"
+                />
+
+                <p
+                  class="text__small-text text-input__message"
+                  id="order__email-msg"
+                ></p>
+              </div>
+
+              <!-- Поле телефона -->
+              <div class="text-input">
+                <div class="text-input__title">Телефон*</div>
+
+                <input
+                  class="text-input__field"
+                  type="tel"
+                  id="order__phone"
+                  placeholder="+7 (999) 123-45-67"
+                />
+
+                <p
+                  class="text__small-text text-input__message"
+                  id="order__phone-msg"
+                ></p>
+              </div>
+
+              <p class="text__body-smaller">
+                * — поля обязательны для заполнения
+              </p>
+            </div>
+          </div>
+
+          <!-- ===== Адрес доставки ===== -->
+          <div class="order__input-group">
+            <div class="input-group__title">
+              <p class="text__price">Адрес доставки</p>
+            </div>
+
+            <div class="input-group__input-list">
+              <!-- Поле города -->
+              <div class="text-input">
+                <div class="text-input__title">Город*</div>
+
+                <input
+                  class="text-input__field"
+                  type="text"
+                  id="order__city"
+                  placeholder="Санкт-Петербург"
+                />
+
+                <p
+                  class="text__small-text text-input__message"
+                  id="order__city-msg"
+                ></p>
+              </div>
+
+              <!-- Поле адреса -->
+              <div class="text-input">
+                <div class="text-input__title">Улица, дом*</div>
+
+                <input
+                  class="text-input__field"
+                  type="text"
+                  id="order__street"
+                  placeholder="Невский проспект, 10"
+                />
+
+                <p
+                  class="text__small-text text-input__message"
+                  id="order__street-msg"
+                ></p>
+              </div>
+
+              <!-- Дополнительные данные адреса -->
+              <div class="group__apartment-details">
+                <!-- Квартира -->
+                <div class="text-input">
+                  <div class="text-input__title">Квартира*</div>
+
+                  <input
+                    class="text-input__field"
+                    type="number"
+                    id="order__apartment"
+                    placeholder="23"
+                  />
+
+                  <p
+                    class="text__small-text text-input__message"
+                    id="order__apartment-msg"
+                  ></p>
+                </div>
+
+                <!-- Подъезд -->
+                <div class="text-input">
+                  <div class="text-input__title">Подъезд</div>
+
+                  <input
+                    class="text-input__field"
+                    type="number"
+                    id="order__entrance"
+                    placeholder="1"
+                  />
+                </div>
+
+                <!-- Этаж -->
+                <div class="text-input">
+                  <div class="text-input__title">Этаж</div>
+
+                  <input
+                    class="text-input__field"
+                    type="number"
+                    id="order__floor"
+                    placeholder="5"
+                  />
+                </div>
+              </div>
+
+              <!-- Комментарий -->
+              <div class="text-input">
+                <div class="text-input__title">Комментарий</div>
+
+                <input
+                  class="text-input__field"
+                  type="text"
+                  id="order__comment"
+                  placeholder="Добавьте пожелания курьеру"
+                />
+              </div>
+
+              <p class="text__body-smaller">
+                * — поля обязательны для заполнения
+              </p>
+
+              <!-- Стоимость доставки -->
+              <p class="text__button">Стоимость доставки: 100 ₽</p>
+            </div>
+          </div>
+
+          <!-- ===== Время доставки ===== -->
+          <div class="order__input-group">
+            <div class="input-group__title">
+              <p class="text__price">Время доставки</p>
+            </div>
+
+            <div class="input-group__input-list">
+              <!-- Выбор даты -->
+              <div class="group__delivery-time">
+                <p class="text__button">Выберите дату доставки</p>
+
+                <!-- Кнопки дат создаются через JS -->
+                <div
+                  class="delivery-time__buttons"
+                  id="order__dates-container"
+                ></div>
+              </div>
+
+              <!-- Выбор времени -->
+              <div class="group__delivery-time">
+                <p class="text__button">Выберите время доставки</p>
+
+                <div class="delivery-time__buttons" id="order__times-container">
+                  <button class="order__delivery-time" data-time="10:00-14:00">
+                    С 10:00 до 14:00
+                  </button>
+
+                  <button class="order__delivery-time" data-time="14:00-17:00">
+                    С 14:00 до 17:00
+                  </button>
+
+                  <button class="order__delivery-time" data-time="17:00-20:00">
+                    С 17:00 до 20:00
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== Способ оплаты ===== -->
+          <div class="order__input-group">
+            <div class="input-group__title">
+              <p class="text__price">Способ оплаты</p>
+            </div>
+
+            <div class="input-group__input-list">
+              <p class="text__button">Выберите способ оплаты</p>
+
+              <!-- Список способов оплаты -->
+              <div class="payment-methods">
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="payment_method"
+                    value="картой онлайн"
+                    class="payment-method__radio"
+                    checked
+                  />
+
+                  <span class="text__body-smaller"> Оплата картой онлайн </span>
+                </label>
+
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="payment_method"
+                    value="наличными при получении"
+                    class="payment-method__radio"
+                  />
+
+                  <span class="text__body-smaller">
+                    Наличными при получении
+                  </span>
+                </label>
+
+                <label class="payment-method">
+                  <input
+                    type="radio"
+                    name="payment_method"
+                    value="картой при получении"
+                    class="payment-method__radio"
+                  />
+
+                  <span class="text__body-smaller"> Картой при получении </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Правая часть с итогами заказа -->
+        <div class="cart-items__summary">
+          <p class="text__price">Ваш заказ</p>
+
+          <!-- Подсчет стоимости -->
+          <div class="summary__counting">
+            <!-- Количество товаров -->
+            <div class="summary__counting-group">
+              <p class="counting-group__title text__body">
+                Товары (<span id="order__total-count">0</span>)
+              </p>
+
+              <p class="text__body" id="order__items-price">0 ₽</p>
+            </div>
+
+            <!-- Скидка -->
+            <div class="summary__counting-group">
+              <p class="counting-group__title text__body">Скидка</p>
+
+              <p class="text__body" id="order__discount">0 ₽</p>
+            </div>
+
+            <!-- Стоимость доставки -->
+            <div class="summary__counting-group">
+              <p class="counting-group__title text__body">Доставка</p>
+
+              <p class="text__body" id="order__delivery-cost">100 ₽</p>
+            </div>
+          </div>
+
+          <!-- Итоговая стоимость -->
+          <div class="summary__counting-group">
+            <p class="text__h3">Итого:</p>
+
+            <p class="text__h3" id="order__final-price">0 ₽</p>
+          </div>
+
+          <!-- Кнопка оформления заказа -->
+          <button
+            class="summary__proceed-to-order text__button"
+            id="order__submit"
+            disabled
+          >
+            Оформить заказ
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

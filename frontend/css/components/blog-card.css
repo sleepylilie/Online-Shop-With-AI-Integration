@@ -1,0 +1,39 @@
+/* 
+=========
+Стили карточки публикации
+=========
+Файл отвечает за:
+- оформление карточки блога,
+- отображение изображения и текста,
+- эффекты при наведении,
+- расположение элементов внутри карточки
+*/
+
+/* Основной контейнер карточки */
+.blog-card {
+    min-width: fit-content;
+    padding: 0;
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Эффект при наведении */
+.blog-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(44, 44, 44, 0.1);
+}
+
+/* Изображение публикации */
+.blog-card img {
+    width: 100%;
+}
+
+/* Дополнительная информация */
+.blog-card #blog-card__details {
+    color: var(--dark-gray);
+}

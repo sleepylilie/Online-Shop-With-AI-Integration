@@ -1,0 +1,64 @@
+/* 
+=========
+Стили поп-апа оценки товара
+=========
+Файл отвечает за:
+- оформление поп-апа оценки товара,
+- отображение формы отзыва,
+- расположение звезд рейтинга,
+- оформление полей ввода и кнопок
+*/
+
+/* Основной контейнер окна */
+.rate-product {
+    width: min(480px, 100%);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Верхняя часть окна */
+.rate-product__top {
+    background-color: var(--pastel-yellow);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Основной контент */
+.rate-product__main {
+    padding: 20px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Контейнер полей */
+.rate-product__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Один блок ввода */
+.rate-product__input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Контейнер звезд рейтинга */
+.rate-product__stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Иконки звезд */
+.rate-product__stars img {
+    width: 40px;
+    height: 40px;
+}

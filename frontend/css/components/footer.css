@@ -1,0 +1,158 @@
+/* 
+=========
+Стили футера сайта
+=========
+Файл отвечает за:
+- оформление нижней части сайта,
+- расположение ссылок и разделов,
+- отображение социальных сетей,
+- адаптацию футера под разные экраны
+*/
+
+/* ===== Основной контейнер футера ===== */
+
+footer {
+    display: grid;
+    height: fit-content;
+    width: 100%;
+    grid-template-rows: 1fr 16px;
+    gap: 12px;
+    background-color: var(--pastel-yellow);
+    padding: 24px 0;
+    flex-shrink: 0;
+
+    /* Дополнительный отступ для тап-бара */
+    @media (max-width: 767px) {
+        padding-bottom: 84px;
+    }
+}
+
+/* ===== Секции футера ===== */
+
+.footer-section {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    align-items: start;
+    grid-auto-rows: row dense;
+}
+
+/* ===== Блоки ссылок ===== */
+
+/* Контейнер раздела */
+.footer__links-container {
+    width: 100%;
+    min-width: fit-content;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Блок каталога шире остальных */
+.footer__links-container#catalog_container {
+    width: 100%;
+    grid-column: span 4;
+}
+
+/* ===== Ссылки ===== */
+
+/* Контейнер ссылок */
+.links-container__links-section {
+    display: grid;
+    gap: 8px 20px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-flow: row;
+    grid-auto-rows: fit-content;
+}
+
+/* Сетка ссылок каталога */
+.footer__links-container#catalog_container .links-container__links-section {
+    display: grid;
+    gap: 8px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+    grid-auto-rows: fit-content;
+}
+
+/* Ссылки */
+.links-container__links-section a {
+    color: var(--dark-gray);
+    width: 100%;
+    transition: color 0.2s ease;
+}
+
+/* Наведение на ссылку */
+.links-container__links-section a:hover {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+/* ===== Социальные сети ===== */
+
+/* Контейнер иконок */
+.links-section__icons {
+    display: flex;
+    gap: 12px;
+    grid-template-columns: repeat(2, 24px);
+}
+
+/* Ссылка с иконкой */
+.links-section__icons a {
+    width: max-content;
+}
+
+/* Иконка */
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===== Копирайт ===== */
+
+/* Блок юридической информации */
+.footer__legal-information {
+    grid-column: span 12;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+/* ===== Адаптация ===== */
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1279px) {
+
+    .footer-section {
+        padding: 0 24px;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 16px;
+    }
+
+    .footer__legal-information {
+        grid-column: span 8;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 767px) {
+
+    .footer-section {
+        padding: 0 20px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .footer__links-container {
+        gap: 12px;
+    }
+
+    .footer__legal-information {
+        grid-column: span 4;
+    }
+}

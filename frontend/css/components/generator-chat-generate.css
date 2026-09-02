@@ -1,0 +1,79 @@
+/* 
+=========
+Стили блока генерации идей
+=========
+Файл отвечает за:
+- расположение блоков выбора параметров,
+- отображение кнопок фильтров,
+- сетку вариантов выбора,
+- адаптацию формы под разные экраны
+*/
+
+/* Основной контейнер генератора */
+.generator-chat-generate {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Блок выбора параметров */
+.generate__hobby-select,
+.generate__age-select,
+.generate__difficulty-select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: fit-content;
+}
+
+/* Сетка выбора хобби */
+.hobby-select__filter-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: auto;
+
+    /* Планшетная версия */
+    @media (max-width: 1279px) and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Мобильная версия */
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Сетка возрастных категорий */
+.age-select__filter-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+
+    /* Мобильная версия */
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Сетка уровней сложности */
+.difficulty-select__filter-list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+
+    /* Мобильная версия */
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Контейнер кнопки генерации */
+.generate__button {
+    width: min(300px, 100%);
+}

@@ -1,0 +1,96 @@
+<!--
+Страница шаблона идеи.
+Файл отображает подробное описание идеи,
+изображение результата и рекомендуемые товары.
+Данные загружаются динамически
+с помощью файла idea-page.ts.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Идея</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Стили страницы идеи -->
+    <link rel="stylesheet" href="/static/css/pages/idea-page.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт логики страницы идеи -->
+    <script type="module" src="/static/js/idea-page.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="idea-page__top">
+        <!-- Хлебные крошки -->
+        <div class="top__bread-crumbs">
+          <!-- Ссылка назад к генератору -->
+          <a href="/pages/idea-generator.html" class="text__body-smaller">
+            Генератор идей
+          </a>
+
+          <p class="text__body-smaller">›</p>
+
+          <!-- Название текущего раздела -->
+          <span class="text__body-smaller" id="idea-page__type-crumb">
+            Идея
+          </span>
+        </div>
+
+        <!-- Заголовок идеи -->
+        <h2 class="text__h2" id="idea-page__title"></h2>
+
+        <!-- Информация о категории идеи -->
+        <p
+          class="text__body-smaller idea-page__attrs"
+          id="idea-page__attrs"
+          style="color: var(--dark-gray)"
+        ></p>
+      </section>
+
+      <!-- Основной контент страницы -->
+      <section class="idea-page__main">
+        <!-- Изображение результата -->
+        <div
+          class="main__idea-image"
+          id="idea-page__image-container"
+          style="display: none"
+        >
+          <img id="idea-page__image" src="" alt="" />
+        </div>
+
+        <!-- Подробное описание идеи -->
+        <div
+          class="main__idea-text text__body-smaller"
+          id="idea-page__content"
+        ></div>
+
+        <!-- Блок рекомендуемых товаров -->
+        <div id="idea-page__products" style="display: none">
+          <!-- Заголовок блока -->
+          <h3 class="text__h3" style="margin-bottom: 16px">Нужные материалы</h3>
+
+          <!-- Сетка товаров -->
+          <div class="catalog-product-grid" id="idea-page__products-grid"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

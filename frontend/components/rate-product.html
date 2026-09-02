@@ -1,0 +1,84 @@
+<!--
+Поп-ап для оценки товара
+-->
+
+<div class="rate-product">
+  <!-- Верхняя часть окна -->
+  <div class="rate-product__top">
+    <!-- Заголовок -->
+    <h3 class="text__h3">Оценить товар</h3>
+
+    <!-- Кнопка закрытия -->
+    <button class="rate-product__close">
+      <img
+        class="icon"
+        src="../assets/icons/icon_close_black.svg"
+        title="Закрыть"
+      />
+    </button>
+  </div>
+
+  <!-- Основной контент -->
+  <div class="rate-product__main">
+    <div class="rate-product__inputs">
+      <!-- Блок оценки -->
+      <div class="rate-product__input">
+        <p class="text__button">Оцените товар</p>
+
+        <!-- Звезды рейтинга -->
+        <div class="rate-product__stars">
+          <img
+            src="../assets/icons/icon_star-filled_yellow.svg"
+            id="product-rating-1"
+          />
+
+          <img
+            src="../assets/icons/icon_star-filled_yellow.svg"
+            id="product-rating-2"
+          />
+
+          <img
+            src="../assets/icons/icon_star-filled_yellow.svg"
+            id="product-rating-3"
+          />
+
+          <img
+            src="../assets/icons/icon_star-filled_yellow.svg"
+            id="product-rating-4"
+          />
+
+          <img
+            src="../assets/icons/icon_star-filled_yellow.svg"
+            id="product-rating-5"
+          />
+        </div>
+      </div>
+
+      <!-- Поле комментария -->
+      <div class="text-input">
+        <div class="text-input__title">Комментарий (опционально)</div>
+
+        <input
+          class="text-input__field"
+          type="text"
+          id="review__comment"
+          placeholder="Добавьте комментарий к вашему отзыву"
+        />
+
+        <!-- Сообщение об ошибке -->
+        <p
+          class="text__small-text text-input__message"
+          id="review-comment__message"
+        ></p>
+      </div>
+    </div>
+
+    <!-- Кнопка отправки -->
+    <button
+      class="text__button button__accent2-no-icon"
+      id="rate-product__send-review"
+    >
+      Отправить отзыв
+    </button>
+  </div>
+</div>

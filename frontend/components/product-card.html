@@ -1,0 +1,77 @@
+<!--
+Шаблон карточки товара
+-->
+
+<template class="product-card-template">
+  <div class="product-card" data-product-url="">
+    <!-- ===== Галерея товара ===== -->
+    <div class="product-card__photo-section">
+      <!-- Изображение товара -->
+      <img class="product-card__photo" src="" alt="Фото товара" />
+
+      <!-- Кнопка добавления в избранное -->
+      <button
+        class="product-card__btn-favorite"
+        title="Добавить в избранное"
+        aria-label="В избранное"
+      >
+        <img
+          class="icon product-card__icon-favorite"
+          src="/static/assets/icons/icon_liked.svg"
+          alt=""
+        />
+      </button>
+    </div>
+
+    <!-- ===== Информация о товаре ===== -->
+    <div class="product-card__text-section">
+      <!-- Блок цен -->
+      <div class="text-section__price-container">
+        <div class="price-container__prices">
+          <!-- Текущая цена -->
+          <p class="text__price product-card__price"></p>
+
+          <!-- Старая цена -->
+          <!-- Показывается только при наличии скидки -->
+          <p class="text__body-smaller product-card__old-price"></p>
+        </div>
+
+        <!-- Тег скидки -->
+        <!-- По умолчанию скрыт -->
+        <div class="product-card__sale-tag">
+          <p class="text__button product-card__sale-percent"></p>
+        </div>
+      </div>
+
+      <!-- Название товара -->
+      <span class="text__button product-card__name"></span>
+
+      <!-- Блок рейтинга -->
+      <div class="text-section__rating-container">
+        <!-- Иконка рейтинга -->
+        <img
+          class="icon"
+          src="/static/assets/icons/icon_star-filled_yellow.svg"
+          alt="Рейтинг"
+        />
+
+        <!-- Значение рейтинга -->
+        <p class="text__body-smaller product-card__rating"></p>
+      </div>
+    </div>
+
+    <!-- ===== Кнопка корзины ===== -->
+    <div class="product-card__button-section">
+      <!-- Добавление товара в корзину -->
+      <button class="product-card__btn-cart">
+        <img
+          class="icon"
+          src="/static/assets/icons/icon_add-to-cart.svg"
+          alt=""
+        />
+
+        <p class="text__button">В корзину</p>
+      </button>
+    </div>
+  </div>
+</template>

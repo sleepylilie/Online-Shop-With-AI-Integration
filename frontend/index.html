@@ -1,0 +1,108 @@
+<!--
+Главная страница интернет-магазина товаров для творчества.
+Файл содержит:
+- главный баннер, 
+- категории, 
+- товары со скидками,
+- новинки 
+- раздел со статьями
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название страницы -->
+    <title>Хобби-маркет</title>
+
+    <!-- Описание сайта -->
+    <meta
+      name="description"
+      content="Интернет-магазин товаров для творчества с системой рекомендаций."
+    />
+
+    <!-- Подключение CSS-стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Скрипт для загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт для загрузки данных главной страницы -->
+    <script type="module" src="/static/js/home.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта загружается через load_components.js -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Главный баннер -->
+      <section class="home__main-banner">
+        <h1 class="text__h1">Все для вашего творчества</h1>
+
+        <p class="text__body">
+          Более двухсот товаров для творчества и хобби. Наш генератор идей
+          поможет вам поймать вдохновение!
+        </p>
+
+        <!-- Кнопка перехода к генератору идей -->
+        <button class="main-banner__generate-idea" id="home__go-to-generator">
+          <img
+            class="icon"
+            src="/static/assets/icons/icon_generate.svg"
+            alt=""
+          />
+
+          <span class="text__button">Сгенерировать идею</span>
+        </button>
+      </section>
+
+      <!-- Блок со скидками -->
+      <section class="home__sales">
+        <h3 class="text__h3">Скидки</h3>
+
+        <!-- Карточки товаров добавляются через home.ts -->
+        <div class="product-list" id="home__sales-product-list"></div>
+      </section>
+
+      <!-- Категории товаров -->
+      <section class="home__categories">
+        <h3 class="text__h3">Категории</h3>
+
+        <!-- Сетка категорий наполняется через home.ts-->
+        <div class="categories__grid" id="home__categories-grid"></div>
+      </section>
+
+      <!-- Блок с новыми товарами -->
+      <section class="home__new-products">
+        <h3 class="text__h3">Новинки</h3>
+
+        <!-- Карточки новинок добавляются через home.ts-->
+        <div class="product-list" id="home__new-product-list"></div>
+      </section>
+
+      <!-- Раздел со статьями и новостями -->
+      <section class="home__blog">
+        <!-- Кнопка перехода на страницу блога -->
+        <button class="product-list__header" id="home__go-to-blog">
+          <h3 class="text__h3">Статьи и новости</h3>
+
+          <img
+            class="icon"
+            src="/static/assets/icons/icon_arrow-right_swipe.svg"
+            alt=""
+          />
+        </button>
+
+        <!-- Карточки статей добавляются через home.ts -->
+        <div class="blog__blog-grid" id="home__blog-grid"></div>
+      </section>
+    </div>
+
+    <!-- Подвал сайта загружается через load_components.js -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>

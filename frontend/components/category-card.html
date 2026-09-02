@@ -1,0 +1,23 @@
+<!--
+Шаблон карточки категории каталога
+-->
+
+<div class="category-card">
+  <!-- Ссылка на страницу категории -->
+  <a
+    href="/catalog?category={{category_url}}"
+    class="category-card"
+    data-category-url="{{category_url}}"
+  >
+    <!-- Иконка категории -->
+    <img
+      src="{{category_icon}}"
+      alt="{{category_name}}"
+      class="category-card__icon"
+    />
+
+    <!-- Название категории -->
+    <span class="text__button"> {{category_name}} </span>
+  </a>
+</div>
+```

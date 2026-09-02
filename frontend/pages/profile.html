@@ -1,0 +1,729 @@
+<!--
+Страница личного кабинета пользователя.
+Файл содержит навигацию по разделам профиля:
+- личная информация, 
+- уведомления, 
+- заказы,
+- избранные товары, 
+- отзывы.
+Данные загружаются и обрабатываются через profile.js.
+-->
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Основные настройки страницы -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Название вкладки -->
+    <title>Личный кабинет</title>
+
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="/static/css/stylesheet.css" />
+
+    <!-- Подключение стилей страницы профиля -->
+    <link rel="stylesheet" href="/static/css/pages/profile.css" />
+
+    <!-- Скрипт загрузки общих компонентов -->
+    <script src="/static/js/load_components.js" defer></script>
+
+    <!-- Скрипт логики личного кабинета -->
+    <script type="module" src="/static/js/profile.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Шапка сайта -->
+    <header data-component="header"></header>
+
+    <div class="content-grid">
+      <!-- Верхняя часть страницы -->
+      <section class="profile__top">
+        <h2 class="text__h2">Личный кабинет</h2>
+      </section>
+
+      <!-- Основной блок личного кабинета -->
+      <section class="profile__main">
+        <!-- Левая панель навигации -->
+        <div class="profile__nav" id="profile__nav">
+          <!-- Блок с аватаром и именем пользователя -->
+          <div class="profile__nav-option profile__nav-option--user">
+            <img
+              class="profile-icon"
+              id="profile__avatar-img"
+              src="/media/profile-avatars/avatar-placeholder.png"
+              alt="Аватар"
+            />
+
+            <p class="text__button" id="profile__nav-username">Загрузка...</p>
+          </div>
+
+          <!-- Переход к личной информации -->
+          <button class="profile__nav-option" data-tab="personal">
+            <img
+              class="profile-icon"
+              src="/static/assets/icons/profile-icon_personal-info.svg"
+              alt=""
+            />
+
+            <p class="text__button">Личная информация</p>
+          </button>
+
+          <!-- Переход к уведомлениям -->
+          <button class="profile__nav-option" data-tab="notifications">
+            <img
+              class="profile-icon"
+              src="/static/assets/icons/profile-icon_notifications.svg"
+              alt=""
+            />
+
+            <p class="text__button">Уведомления</p>
+          </button>
+
+          <!-- Переход к заказам -->
+          <button class="profile__nav-option" data-tab="orders">
+            <img
+              class="profile-icon"
+              src="/static/assets/icons/profile-icon_orders.svg"
+              alt=""
+            />
+
+            <p class="text__button">Мои заказы</p>
+          </button>
+
+          <!-- Переход к избранным товарам -->
+          <button class="profile__nav-option" data-tab="favorites">
+            <img
+              class="profile-icon"
+              src="/static/assets/icons/profile-icon_favorites.svg"
+              alt=""
+            />
+
+            <p class="text__button">Избранные товары</p>
+          </button>
+
+          <!-- Переход к отзывам -->
+          <button class="profile__nav-option" data-tab="reviews">
+            <img
+              class="profile-icon"
+              src="/static/assets/icons/profile-icon_reviews.svg"
+              alt=""
+            />
+
+            <p class="text__button">Мои отзывы</p>
+          </button>
+        </div>
+
+        <!-- Правая панель контента -->
+        <div class="profile__content" id="profile__content">
+          <!-- Вкладка личной информации -->
+          <div
+            class="profile__tab"
+            id="profile-tab__personal"
+            style="display: none"
+          >
+            <!-- Кнопка возврата к навигации на маленьких экранах -->
+            <button
+              class="button__icon-with-text-no-bg profile__back-btn"
+              id="profile-tab__back-to-nav"
+            >
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_arrow-left_swipe.svg"
+                alt=""
+              />
+
+              <p class="text__button">Обратно к навигации</p>
+            </button>
+
+            <h3 class="text__h3">Личная информация</h3>
+
+            <div class="profile-tab__content">
+              <!-- Основные поля пользователя -->
+              <div class="personal-content__text-inputs">
+                <!-- Поле фамилии -->
+                <div class="text-input">
+                  <div class="text-input__title">Фамилия</div>
+
+                  <input
+                    class="text-input__field"
+                    type="text"
+                    id="profile__last-name"
+                    placeholder="Иванов"
+                    maxlength="100"
+                  />
+
+                  <p
+                    class="text__small-text text-input__message"
+                    id="profile__last-name-msg"
+                  ></p>
+                </div>
+
+                <!-- Поле имени -->
+                <div class="text-input">
+                  <div class="text-input__title">Имя</div>
+
+                  <input
+                    class="text-input__field"
+                    type="text"
+                    id="profile__first-name"
+                    placeholder="Иван"
+                    maxlength="100"
+                  />
+
+                  <p
+                    class="text__small-text text-input__message"
+                    id="profile__first-name-msg"
+                  ></p>
+                </div>
+
+                <!-- Поле электронной почты -->
+                <div class="text-input">
+                  <div class="text-input__title">Email</div>
+
+                  <input
+                    class="text-input__field"
+                    type="email"
+                    id="profile__email"
+                    placeholder="example@yandex.ru"
+                    maxlength="255"
+                  />
+
+                  <p
+                    class="text__small-text text-input__message"
+                    id="profile__email-msg"
+                  ></p>
+                </div>
+
+                <!-- Поле телефона -->
+                <div class="text-input">
+                  <div class="text-input__title">Телефон</div>
+
+                  <input
+                    class="text-input__field"
+                    type="tel"
+                    id="profile__phone"
+                    placeholder="+7(___) ___-__-__"
+                    maxlength="18"
+                  />
+
+                  <p
+                    class="text__small-text text-input__message"
+                    id="profile__phone-msg"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- Дополнительная информация пользователя -->
+              <div class="personal-content__additional-inputs">
+                <!-- Выбор пола -->
+                <div class="personal-content__radio-sex">
+                  <p class="text__button">Ваш пол</p>
+
+                  <div class="radio-sex__options">
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="profile-gender"
+                        value="женский"
+                        id="profile-gender__female"
+                      />
+
+                      <span class="text__body-smaller">Женский</span>
+                    </label>
+
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="profile-gender"
+                        value="мужской"
+                        id="profile-gender__male"
+                      />
+
+                      <span class="text__body-smaller">Мужской</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Загрузка аватара -->
+                <div class="personal-content__avatar-upload">
+                  <p class="text__button">Аватар</p>
+
+                  <div class="avatar-upload__button">
+                    <!-- Скрытое поле выбора файла -->
+                    <input
+                      type="file"
+                      id="profile__avatar-input"
+                      accept=".jpg,.jpeg,.png"
+                      style="display: none"
+                    />
+
+                    <!-- Кнопка выбора изображения -->
+                    <button
+                      class="button__pastel-yellow-with-icon"
+                      id="profile__avatar-btn"
+                    >
+                      <img
+                        class="icon"
+                        src="/static/assets/icons/icon_share_black.svg"
+                        alt=""
+                      />
+
+                      <p class="text__button">Загрузить фото</p>
+                    </button>
+
+                    <!-- Подсказка по формату файла -->
+                    <p class="text__body-smaller">
+                      Формат: .png, .jpg, .jpeg<br />
+                      Не более 4 МБ
+                    </p>
+                  </div>
+
+                  <!-- Сообщение об ошибке аватара -->
+                  <p
+                    class="text__small-text"
+                    id="profile__avatar-msg"
+                    style="color: var(--error); display: none"
+                  ></p>
+                </div>
+              </div>
+
+              <!-- Сохранение изменений -->
+              <div class="personal-content__save-changes">
+                <button
+                  class="button__accent2-no-icon text__button"
+                  id="profile__save-btn"
+                >
+                  Сохранить изменения
+                </button>
+
+                <!-- Сообщение после сохранения -->
+                <p
+                  class="text__small-text"
+                  id="profile__save-msg"
+                  style="display: none"
+                ></p>
+              </div>
+
+              <!-- Управление аккаунтом -->
+              <div class="personal-content__account-control">
+                <!-- Блок смены пароля -->
+                <div class="account-control__change-password">
+                  <!-- Кнопка показа формы смены пароля -->
+                  <button
+                    class="account-control__change-password-show text__button"
+                    id="profile__show-change-pwd"
+                  >
+                    Изменить пароль
+                  </button>
+
+                  <!-- Скрытый блок подтверждения текущего пароля -->
+                  <div
+                    id="profile__change-pwd-block"
+                    style="display: none"
+                    class="account-control__change-password"
+                  >
+                    <div class="text-input">
+                      <div class="text-input__title">Текущий пароль</div>
+
+                      <input
+                        class="text-input__field"
+                        type="password"
+                        id="profile__current-pwd"
+                        placeholder="Введите текущий пароль"
+                      />
+
+                      <p
+                        class="text__small-text text-input__message"
+                        id="profile__pwd-msg"
+                      ></p>
+                    </div>
+
+                    <button
+                      class="button__accent2-no-icon text__button"
+                      id="profile__confirm-pwd-btn"
+                    >
+                      Подтвердить и перейти к смене пароля
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Кнопка удаления аккаунта -->
+                <button
+                  class="account-control__delete-account text__button"
+                  id="profile__delete-account-btn"
+                >
+                  Удалить аккаунт
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вкладка уведомлений -->
+          <div
+            class="profile__tab"
+            id="profile-tab__notifications"
+            style="display: none"
+          >
+            <!-- Кнопка возврата к навигации -->
+            <button
+              class="button__icon-with-text-no-bg profile__back-btn"
+              id="profile-tab__back-to-nav-notif"
+            >
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_arrow-left_swipe.svg"
+                alt=""
+              />
+
+              <p class="text__button">Обратно к навигации</p>
+            </button>
+
+            <h3 class="text__h3">Уведомления</h3>
+
+            <div class="profile-tab__content">
+              <!-- Фильтры уведомлений -->
+              <div class="profile-tab__filters">
+                <button
+                  class="blog-filter__category active"
+                  data-notif-type="all"
+                >
+                  Все
+                </button>
+
+                <button class="blog-filter__category" data-notif-type="orders">
+                  Статус заказа
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-notif-type="reminders"
+                >
+                  Напоминания
+                </button>
+
+                <button class="blog-filter__category" data-notif-type="system">
+                  Системные
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-notif-type="marketing"
+                >
+                  Предложения
+                </button>
+              </div>
+
+              <!-- Кнопки управления уведомлениями -->
+              <div class="profile-notifications__notification-controllers">
+                <button
+                  class="button__icon-with-text-no-bg"
+                  id="profile-notifications__mark-all-read"
+                >
+                  <img
+                    class="icon"
+                    src="/static/assets/icons/icon_tick-green.svg"
+                    alt=""
+                  />
+
+                  <p class="text__body-smaller">Пометить все как прочитанные</p>
+                </button>
+
+                <button
+                  class="button__icon-with-text-no-bg"
+                  id="profile-notifications__delete-read"
+                >
+                  <img
+                    class="icon"
+                    src="/static/assets/icons/icon_bin.svg"
+                    alt=""
+                  />
+
+                  <p class="text__body-smaller">Удалить прочитанные</p>
+                </button>
+              </div>
+
+              <!-- Список уведомлений -->
+              <div id="profile__notifications-list">
+                <p class="text__body-smaller" style="color: var(--dark-gray)">
+                  Загрузка...
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вкладка заказов -->
+          <div
+            class="profile__tab"
+            id="profile-tab__orders"
+            style="display: none"
+          >
+            <!-- Кнопка возврата к навигации -->
+            <button
+              class="button__icon-with-text-no-bg profile__back-btn"
+              id="profile-tab__back-to-nav-orders"
+            >
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_arrow-left_swipe.svg"
+                alt=""
+              />
+
+              <p class="text__button">Обратно к навигации</p>
+            </button>
+
+            <h3 class="text__h3">Мои заказы</h3>
+
+            <div class="profile-tab__content">
+              <!-- Фильтры заказов -->
+              <div class="profile-tab__filters">
+                <button
+                  class="blog-filter__category active"
+                  data-order-filter="all"
+                >
+                  Все
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-order-filter="active"
+                >
+                  Актуальные
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-order-filter="finished"
+                >
+                  Завершённые
+                </button>
+              </div>
+
+              <!-- Список заказов -->
+              <div id="profile__orders-list">
+                <p class="text__body-smaller" style="color: var(--dark-gray)">
+                  Загрузка...
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вкладка избранных товаров -->
+          <div
+            class="profile__tab"
+            id="profile-tab__favorites"
+            style="display: none"
+          >
+            <!-- Кнопка возврата к навигации -->
+            <button
+              class="button__icon-with-text-no-bg profile__back-btn"
+              id="profile-tab__back-to-nav-fav"
+            >
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_arrow-left_swipe.svg"
+                alt=""
+              />
+
+              <p class="text__button">Обратно к навигации</p>
+            </button>
+
+            <h3 class="text__h3">Избранные товары</h3>
+
+            <!-- Сетка избранных товаров -->
+            <div class="catalog-product-grid" id="profile__favorites-grid">
+              <p class="text__body-smaller" style="color: var(--dark-gray)">
+                Загрузка...
+              </p>
+            </div>
+          </div>
+
+          <!-- Вкладка отзывов -->
+          <div
+            class="profile__tab"
+            id="profile-tab__reviews"
+            style="display: none"
+          >
+            <!-- Кнопка возврата к навигации -->
+            <button
+              class="button__icon-with-text-no-bg profile__back-btn"
+              id="profile-tab__back-to-nav-reviews"
+            >
+              <img
+                class="icon"
+                src="/static/assets/icons/icon_arrow-left_swipe.svg"
+                alt=""
+              />
+
+              <p class="text__button">Обратно к навигации</p>
+            </button>
+
+            <h3 class="text__h3">Мои отзывы</h3>
+
+            <div class="profile-tab__content">
+              <!-- Фильтры отзывов -->
+              <div class="profile-tab__filters">
+                <button
+                  class="blog-filter__category active"
+                  data-review-filter="all"
+                >
+                  Все
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-review-filter="approved"
+                >
+                  Опубликованные
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-review-filter="moderation"
+                >
+                  На модерации
+                </button>
+
+                <button
+                  class="blog-filter__category"
+                  data-review-filter="rejected"
+                >
+                  Отклонённые
+                </button>
+              </div>
+
+              <!-- Список отзывов -->
+              <div id="profile__reviews-list">
+                <p class="text__body-smaller" style="color: var(--dark-gray)">
+                  Загрузка...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Поп-ап оценки товара -->
+    <div
+      id="review-popup-overlay"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(44, 44, 44, 0.5);
+        z-index: 300;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        display: none;
+      "
+    >
+      <!-- Окно поп-апа -->
+      <div
+        class="login-popup"
+        id="review-popup"
+        style="max-width: 480px; width: 100%"
+      >
+        <!-- Верхняя часть поп-апа -->
+        <div class="login__top">
+          <h3 class="text__h3">Оценить товар</h3>
+
+          <!-- Кнопка закрытия -->
+          <button id="review-popup__close" class="login__close">
+            <img
+              class="icon"
+              src="/static/assets/icons/icon_close_black.svg"
+              alt="Закрыть"
+            />
+          </button>
+        </div>
+
+        <!-- Основной контент поп-апа -->
+        <div class="login__main">
+          <!-- Название товара -->
+          <p class="text__button" id="review-popup__product-name"></p>
+
+          <!-- Звезды оценки -->
+          <div
+            class="review-popup__stars"
+            id="review-popup__stars"
+            style="display: flex; gap: 8px; cursor: pointer"
+          >
+            <img
+              class="review-star"
+              data-star="1"
+              src="/static/assets/icons/icon_star-filled_gray.svg"
+              style="width: 32px; height: 32px"
+              alt="1"
+            />
+
+            <img
+              class="review-star"
+              data-star="2"
+              src="/static/assets/icons/icon_star-filled_gray.svg"
+              style="width: 32px; height: 32px"
+              alt="2"
+            />
+
+            <img
+              class="review-star"
+              data-star="3"
+              src="/static/assets/icons/icon_star-filled_gray.svg"
+              style="width: 32px; height: 32px"
+              alt="3"
+            />
+
+            <img
+              class="review-star"
+              data-star="4"
+              src="/static/assets/icons/icon_star-filled_gray.svg"
+              style="width: 32px; height: 32px"
+              alt="4"
+            />
+
+            <img
+              class="review-star"
+              data-star="5"
+              src="/static/assets/icons/icon_star-filled_gray.svg"
+              style="width: 32px; height: 32px"
+              alt="5"
+            />
+          </div>
+
+          <!-- Поле комментария -->
+          <div class="text-input">
+            <div class="text-input__title">Комментарий (необязательно)</div>
+
+            <textarea
+              class="text-input__field"
+              id="review-popup__comment"
+              rows="3"
+              maxlength="2000"
+              placeholder="Расскажите о товаре..."
+              style="resize: vertical; height: 80px"
+            ></textarea>
+          </div>
+
+          <!-- Сообщение об ошибке -->
+          <p
+            class="text__small-text"
+            id="review-popup__msg"
+            style="display: none; color: var(--error)"
+          ></p>
+
+          <!-- Кнопка отправки отзыва -->
+          <button
+            class="button__accent2-no-icon text__button"
+            id="review-popup__submit"
+          >
+            Отправить отзыв
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer data-component="footer"></footer>
+  </body>
+</html>
